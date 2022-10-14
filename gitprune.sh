@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-14 INICIO CON CONFIGSERVER Y MICROSERVICIO ALUMNOS"
+message="$(date)2022-10-14 CLASE TEST DE ALUMNO"
 fi
 
 start=`date +%s`
