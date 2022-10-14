@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "dd1535eb-0fd3-4402-8cb2-11029fbb7277",
+		"name": "MicroServicios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20953727"
+	},
+	"item": [
+		{
+			"name": "ConfigServer",
+			"item": [
+				{
+					"name": "ActuatorConfigServer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/actuator",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"actuator"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PropertiesConfigServer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/config-server/default",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"config-server",
+						"default"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
