@@ -12,6 +12,8 @@ drivers/
 *.mp4
 *.jpg
 
+##quito la carpeta de configuracion,esa va en su propio repositorio
+
 
 
 ### Eclipse ###
@@ -111,7 +113,7 @@ Thumbs.db
 
 ##por si acaso hay un repositorio dentro de otro
 .git
-
+.git/
 ##por si acaso hay un log
 *.log
 
