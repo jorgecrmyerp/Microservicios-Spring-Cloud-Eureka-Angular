@@ -5,6 +5,7 @@ package com.jgr.micro.app.usuarios.entity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Random;
 
@@ -15,7 +16,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  * @author JORGE
@@ -116,6 +125,18 @@ class AlumnoTest {
 		fail("Not yet implemented"); // TODO
 	}
 
+	@Disabled
+	@DisplayName("en testGetIdParametrizadoArgumentos")
+	@ParameterizedTest(name = "numero {index} ejecutando con valor {0} - {argumentsWithNames}")
+	@CsvSource({ "1,100", "2,200", "3,300", "4,500", "5,700", "6,1000" })
+	void testGetIdParametrizadoArgumentos(String index, String monto) {
+		// System.out.println(index + " -> " + monto);
+		al2 = new Alumno();
+		al2.setId(Long.valueOf(monto));
+		assertNotNull(al2.getId());
+		assertTrue(al2.getId() > 0);
+	}
+
 	/**
 	 * Test method for {@link com.jgr.micro.app.usuarios.entity.Alumno#getNombre()}.
 	 */
@@ -132,7 +153,7 @@ class AlumnoTest {
 			assertTrue(esperado.equalsIgnoreCase(real));
 		}
 
-		);
+				);
 
 	}
 
@@ -264,8 +285,8 @@ class AlumnoTest {
 	@Test
 	void testGetClass() {
 
-		System.out.println(al1.getClass());
-		System.out.println(al1.getClass().getCanonicalName());
+		// System.out.println(al1.getClass());
+		// System.out.println(al1.getClass().getCanonicalName());
 
 		assertAll(() -> {
 			assertTrue(al1.getClass().toString().equalsIgnoreCase("class com.jgr.micro.app.usuarios.entity.Alumno"),
