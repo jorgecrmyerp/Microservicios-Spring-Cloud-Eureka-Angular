@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jgr.micro.app.usuarios.entity.Alumno;
+import com.jgr.micro.app.usuarios.error.ErrorBBDDException;
+import com.jgr.micro.app.usuarios.error.IdNoEncontradoException;
 import com.jgr.micro.app.usuarios.service.IAlumnoService;
 
 import brave.Tracer;
@@ -42,6 +45,19 @@ public class AlumnoController {
 
 		logger.info("busco alumno->" + id.toString());
 		Optional<Alumno> al = iAlumnoService.findById(id);
+
+		// solo por usar try/catch
+
+		try {
+			if (al == null) {
+				throw new IdNoEncontradoException(String.valueOf(id));
+
+			}
+
+		} catch (DataAccessException e) {
+			throw new ErrorBBDDException(e.getClass().toString().concat(e.getMessage()));
+
+		}
 
 		if (!al.isPresent()) {
 			traceZipkin.currentSpan().tag("microservicioalumnos.AlumnoController.buscarPorId",

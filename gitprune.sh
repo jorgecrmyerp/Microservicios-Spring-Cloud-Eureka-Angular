@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-14 EMPEZANDO MOCK SERVICIOS Y REPOSITORIO"
+message="$(date)2022-10-17 SEGUIR CON EL 67"
 fi
 
 start=`date +%s`
