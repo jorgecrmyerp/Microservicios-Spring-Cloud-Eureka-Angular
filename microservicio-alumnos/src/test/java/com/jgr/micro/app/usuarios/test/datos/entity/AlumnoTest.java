@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jgr.micro.app.usuarios.entity;
+package com.jgr.micro.app.usuarios.test.datos.entity;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +22,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import com.jgr.micro.app.usuarios.entity.Alumno;
 
 /**
  * @author JORGE

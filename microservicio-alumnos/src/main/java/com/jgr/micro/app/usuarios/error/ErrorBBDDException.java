@@ -5,9 +5,6 @@ package com.jgr.micro.app.usuarios.error;
  * The Class ErrorBBDDException.
  */
 public class ErrorBBDDException extends RuntimeException{
-	
-
-
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5534692661974329026L;
 

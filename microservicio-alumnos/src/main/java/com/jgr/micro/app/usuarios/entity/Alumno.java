@@ -1,6 +1,7 @@
 package com.jgr.micro.app.usuarios.entity;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -103,6 +104,8 @@ public class Alumno {
 	public void prePersist() {
 		this.createAt= new Date();
 	}
+
+	
 	
 
 }

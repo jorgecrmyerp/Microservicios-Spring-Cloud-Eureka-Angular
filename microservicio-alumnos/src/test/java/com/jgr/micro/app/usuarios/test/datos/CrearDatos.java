@@ -1,4 +1,4 @@
-package com.jgr.micro.app.usuarios.test;
+package com.jgr.micro.app.usuarios.test.datos;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +15,7 @@ public class CrearDatos {
 	public static Optional<Alumno> creaAlumno1() {
 
 		Alumno al1 = new Alumno();
-		al1.setId(new Random().nextLong());
+		al1.setId(1L);
 		al1.setNombre("Nombre Alumno1");
 		al1.setApellidos("Apellidos 1");
 		al1.setEmail("email@mail.com");
@@ -27,7 +27,7 @@ public class CrearDatos {
 	public static Optional<Alumno> creaAlumno2() {
 
 		Alumno al1 = new Alumno();
-		al1.setId(new Random().nextLong());
+		al1.setId(2L);
 		al1.setNombre("Nombre Alumno2");
 		al1.setApellidos("Apellidos 2");
 		al1.setEmail("email@mail.com");
@@ -39,7 +39,7 @@ public class CrearDatos {
 	public static Optional<Alumno> creaAlumno3() {
 
 		Alumno al1 = new Alumno();
-		al1.setId(new Random().nextLong());
+		al1.setId(3L);
 		al1.setNombre("Nombre Alumno3");
 		al1.setApellidos("Apellidos 3");
 		al1.setEmail("email@mail.com");
