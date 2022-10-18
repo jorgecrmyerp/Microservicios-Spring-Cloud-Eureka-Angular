@@ -8,7 +8,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jgr.micro.app.alumnos</groupId>
-	<artifactId>microservicio-alumnos</artifactId>
+	<artifactId>99-SINSWAGGER-microservicio-alumnos</artifactId>
 	<version>V1</version>
 	<name>microservicio-usuarios</name>
 	<description>Demo project for Spring Boot</description>

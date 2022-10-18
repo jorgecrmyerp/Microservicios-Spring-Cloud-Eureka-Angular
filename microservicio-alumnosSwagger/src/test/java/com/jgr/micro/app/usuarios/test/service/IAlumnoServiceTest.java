@@ -80,7 +80,7 @@ class IAlumnoServiceTest {
 	}
 
 	@Test
-	@Disabled
+	
 	void testSave() {
 		when(alumnoService.save(any(Alumno.class))).thenReturn(CrearDatos.creaAlumno3().get());
 		Alumno al=alumnoService.save(CrearDatos.creaAlumno1().get());
