@@ -1,4 +1,4 @@
-package com.jgr.micro.app.usuarios.service;
+package com.jgr.micro.app.usuarios.test.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -6,6 +6,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterAll;
@@ -22,7 +23,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.jgr.micro.app.usuarios.entity.Alumno;
 import com.jgr.micro.app.usuarios.repository.IAlumnoRepository;
+import com.jgr.micro.app.usuarios.service.IAlumnoService;
 import com.jgr.micro.app.usuarios.test.datos.CrearDatos;
+
+import io.vavr.collection.Stream;
 
 @SpringBootTest
 class IAlumnoServiceTest {
@@ -109,7 +113,8 @@ class IAlumnoServiceTest {
 	@Test
 	@Disabled
 	void testDeleteById() {
-		fail("Not yet implemented"); // TODO
+		
+		
 	}
 
 }
