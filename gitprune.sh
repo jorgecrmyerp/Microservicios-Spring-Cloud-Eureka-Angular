@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-18  FUNCIONA JPA TEST CON H2"
+message="$(date)2022-10-18 POR FIN FUNCIONA SWAGGER"
 fi
 
 start=`date +%s`
