@@ -10,7 +10,7 @@
 			"name": "ConfigServer",
 			"item": [
 				{
-					"name": "ActuatorConfigServer",
+					"name": "ConfigServerActuator",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -26,24 +26,111 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ConfigServerProperties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/config-server/default",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"config-server",
+								"default"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "PropertiesConfigServer",
+			"name": "Alumnos",
+			"item": [
+				{
+					"name": "ListaAlumnos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:57566/api/alumno",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "57566",
+							"path": [
+								"api",
+								"alumno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioAlumnosPropertiesDev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/servicio-alumnos/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-alumnos",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioAlumnosConfiguracion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:55544/api/alumno/obtener-configuracion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "55544",
+							"path": [
+								"api",
+								"alumno",
+								"obtener-configuracion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SWAGGER",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8888/config-server/default",
+					"raw": "http://localhost:57566/v3/api-docs/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8888",
+					"port": "57566",
 					"path": [
-						"config-server",
-						"default"
+						"v3",
+						"api-docs",
+						""
 					]
 				}
 			},

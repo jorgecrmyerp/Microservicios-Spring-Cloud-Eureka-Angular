@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -45,19 +46,20 @@ public class AlumnoController {
 	 */
 	@Autowired
 	private IAlumnoService iAlumnoService;
-	
+
 	/** The entorno. */
-	//para obtener el puerto
-	 @Autowired
-	    private ServletWebServerApplicationContext webServerAppCtxt;
-	 
-	 
-	 /** The entorno. */
-	    // para obtener el entorno de ejecucion
-	    @Autowired
-	    private Environment entorno;
-	 
-	
+	// para obtener el puerto
+	@Autowired
+	private ServletWebServerApplicationContext webServerAppCtxt;
+
+	/** The entorno. */
+	// para obtener el entorno de ejecucion
+	@Autowired
+	private Environment entorno;
+
+	/** The instance id. */
+	@Value("${eureka.instance.instance-id}")
+	private String instanceId;
 
 	/**
 	 * Listar.
@@ -166,8 +168,7 @@ public class AlumnoController {
 		return ResponseEntity.noContent().build();
 
 	}
-	
-	
+
 	/**
 	 * Obtener config.
 	 *
@@ -177,22 +178,18 @@ public class AlumnoController {
 	@GetMapping("/obtener-configuracion")
 	public ResponseEntity<?> obtenerConfig() {
 
-		
-		String textoConfiguracion=entorno.getActiveProfiles()[0];
-		
-		int puerto = webServerAppCtxt.getWebServer().getPort();
-
 		Map<String, String> json = new HashMap<>();
-		
 
-		if (entorno.getActiveProfiles().length > 0 && entorno.getActiveProfiles()[0].equals("dev")) {
-			json.put("autor.nombre", entorno.getProperty("configuracion.autor.nombre"));
-			json.put("autor.email", entorno.getProperty("configuracion.autor.email"));
+		if (entorno.getActiveProfiles().length > 0 
+				&& 
+				(entorno.getActiveProfiles()[0].equals("dev")|| entorno.getActiveProfiles()[0].equals("prod"))
+						) {
+			
+			json.put("puerto", String.valueOf(webServerAppCtxt.getWebServer().getPort()));
+			json.put("instancia", instanceId);
+			json.put("entorno",entorno.getActiveProfiles()[0]);
+			json.put("default",entorno.getDefaultProfiles()[0]);
 		}
-		
-		json.put("texto", textoConfiguracion);
-		json.put("puerto", String.valueOf(puerto));
-		
 
 		return new ResponseEntity<Map<String, String>>(json, HttpStatus.OK);
 	}
