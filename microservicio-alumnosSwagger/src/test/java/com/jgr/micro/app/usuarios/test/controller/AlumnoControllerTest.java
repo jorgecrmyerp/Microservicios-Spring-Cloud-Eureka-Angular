@@ -1,21 +1,18 @@
-package com.jgr.micro.app.usuarios.controller;
+package com.jgr.micro.app.usuarios.test.controller;
 
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -28,13 +25,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jgr.micro.app.usuarios.controller.AlumnoController;
 import com.jgr.micro.app.usuarios.entity.Alumno;
 import com.jgr.micro.app.usuarios.service.IAlumnoService;
 import com.jgr.micro.app.usuarios.test.datos.CrearDatos;
@@ -80,8 +74,10 @@ class AlumnoControllerTest {
 		when(alumnoService.findAll()).thenReturn(CrearDatos.listaAlumnos());
 		// when
 		mockMvc.perform(MockMvcRequestBuilders.get("/api/alumno/").contentType(MediaType.APPLICATION_JSON))
-		.andExpect(jsonPath("$[0].nombre").value("Alumno1")).andExpect(jsonPath("$[0].id").value(1L))
-		.andExpect(jsonPath("$[1].apellidos").value("Apellido2")).andExpect(jsonPath("$", hasSize(4)))
+		.andExpect(jsonPath("$[0].nombre").value("Alumno1"))
+		.andExpect(jsonPath("$[0].id").value(1L))
+		.andExpect(jsonPath("$[1].apellidos").value("Apellido2"))
+		.andExpect(jsonPath("$", hasSize(4)))
 		/*
 		 * como alumnos tiene una fecha,convierte a long el date y da error porque no
 		 * coincide: java.lang.AssertionError: [apellidos=Apellido4].createAt Expected:
@@ -109,11 +105,37 @@ class AlumnoControllerTest {
 
 	}
 
-	@Test
-	@Disabled
-	void testCreaAlumno() {
-		fail("Not yet implemented"); // TODO
+	@Test	
+	void testCreaAlumno() throws JsonProcessingException, Exception {
+
+		Alumno al = CrearDatos.creaAlumno1().get();
+		
+
+		//asigno el id a mano para que no falle la validacion porque al no ir a bbdd
+		//lo va devolver como nulo
+		when(alumnoService.save(any())).then(invocation->{
+			Alumno alu = invocation.getArgument(0);
+			alu.setId((long) 3);
+			return alu;
+		}
+				);
+
+		//when
+		mockMvc.perform(post("/api/alumno").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(al)))
+		
+		//then
+		.andExpect(status().isCreated())
+		.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		.andExpect(jsonPath("$.id",is(3))) // de import static org.hamcrest.Matchers.*;
+		.andExpect(jsonPath("$.nombre",is("Nombre Alumno1")))
+		.andExpect(jsonPath("$.apellidos",is("Apellidos 1")))
+		.andExpect(jsonPath("$.email",is("email@mail.com")));
+		verify(alumnoService).save(any());
+		
+
 	}
+	
 
 	@Test
 	@Disabled

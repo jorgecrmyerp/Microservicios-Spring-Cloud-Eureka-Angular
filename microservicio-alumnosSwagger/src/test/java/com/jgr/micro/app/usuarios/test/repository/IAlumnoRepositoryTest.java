@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -33,6 +34,7 @@ class IAlumnoRepositoryTest {
 	 * Test find by id.
 	 */
 	@Test
+	@DisplayName("en IAlumnoRepositoryTest-testFindById")
 	void testFindById() {
 		Optional<Alumno> alumno = alumnoRepository.findById(1L);
 		assertTrue(alumno.isPresent());
@@ -111,8 +113,6 @@ class IAlumnoRepositoryTest {
 	
 	@Test
 	void testDeleteNoSuchElementException() {
-		
-		
 		alumnoRepository.deleteById(2L);
 
 		 assertThrows(NoSuchElementException.class, () -> {
