@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-20 HASTA SECCION 6 TODO OK"
+message="$(date)2022-10-20 terminar @GetMapping("/obtener-configuracion") para obtener puerto y meter configuracion en cloud"
 fi
 
 start=`date +%s`

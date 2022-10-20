@@ -1,8 +1,9 @@
 package com.jgr.micro.app.usuarios.test.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -27,6 +28,8 @@ import com.jgr.micro.app.usuarios.entity.Alumno;
 import com.jgr.micro.app.usuarios.repository.IAlumnoRepository;
 import com.jgr.micro.app.usuarios.service.IAlumnoService;
 import com.jgr.micro.app.usuarios.test.datos.CrearDatos;
+
+import io.vavr.collection.Stream;
 
 @SpringBootTest
 class IAlumnoServiceTest {
@@ -61,60 +64,82 @@ class IAlumnoServiceTest {
 	void testFindAll() {
 
 		List<Alumno> lista = (List<Alumno>) alumnoRepository.findAll();
+		
+		when(alumnoService.findAll()).thenReturn(CrearDatos.listaAlumnos());
 
+		List<Alumno> listaF = (List<Alumno>) alumnoService.findAll();
+		Alumno al = Stream.ofAll(listaF).get(0);
+		assertFalse(lista.isEmpty());
 		int longi = lista.size();
-
 		assertEquals(longi, 4);
+		assertEquals(lista.size(), listaF.size());
+		// si no coincide es porque el createAt de la clase es diferente, el PrePersist que tengo en
+		// alumno hace algo ''raro''
+		assertEquals(lista, listaF);
+		assertTrue(lista.contains(al), () -> "alumno no existe" + al.toString());
 
 	}
 
 	@Test
 	// @Disabled
 	void testFindById() {
-		assertNotEquals(alumnoService.findById(1L), CrearDatos.creaAlumno1(),
-				() -> "No coindice el alumno");		
+		//HACE ALGO RARO CON LA FECHA,SI DA ERROR,SOBREESCRIBIR EL EQUALS QUITANDO LA FECHA
+		assertEquals(alumnoService.findById(1L), CrearDatos.creaAlumno1(), () -> "No coindice el alumno");
 		verify(alumnoRepository, times(1)).findById(1L);
 		Optional<Alumno> al = alumnoService.findById(8L);
-		assertNotNull(al, () -> "Noes NLO");
+		assertNotNull(al, () -> "No es NULL");
 
 	}
 
 	@Test
-	@Disabled
+
 	void testSave() {
 		when(alumnoService.save(any(Alumno.class))).thenReturn(CrearDatos.creaAlumno3().get());
-		Alumno al=alumnoService.save(CrearDatos.creaAlumno1().get());
-		assertNotNull(al.getId(),()->"no es nulo");
-		assertEquals(3L,al.getId(),()->"No coincide el id");
 		
+		/*esto haria lo  mismo,pero pasando como parametro 
+		  ver testCreaAlumno() en IAlumnoRepositoryTest
+		 */
+		when(alumnoService.save(any())).then(invocation->{
+			Alumno alu = invocation.getArgument(0);
+			alu.setId((long) 3);
+			return alu;
+		}
+				);
+				
+		
+		
+		
+		Alumno al = alumnoService.save(CrearDatos.creaAlumno1().get());
+		assertNotNull(al.getId(), () -> "no es nulo");
+		assertEquals(3L, al.getId(), () -> "No coincide el id");
+
 	}
-	
-	@Test	
+
+	@Test
 	void testSaveIncremental() {
 		Alumno al = CrearDatos.creaAlumno1().get();
-		
-		when(alumnoService.save(any(Alumno.class))).then(new Answer<Alumno>(){
+
+		when(alumnoService.save(any(Alumno.class))).then(new Answer<Alumno>() {
 			Long secuencia = 8L;
+
 			@Override
-			public Alumno answer(InvocationOnMock invocation) throws Throwable{
+			public Alumno answer(InvocationOnMock invocation) throws Throwable {
 				Alumno al = invocation.getArgument(0);
 				al.setId(secuencia++);
 				return al;
 			}
 		});
-		
+
 		alumnoService.save(al);
 		assertNotNull(al.getId());
-		assertEquals(8L,al.getId());
-		
-		
+		assertEquals(8L, al.getId());
+
 	}
 
 	@Test
 	@Disabled
 	void testDeleteById() {
-		
-		
+
 	}
 
 }

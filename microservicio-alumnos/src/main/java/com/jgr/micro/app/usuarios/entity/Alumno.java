@@ -1,6 +1,7 @@
 package com.jgr.micro.app.usuarios.entity;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -70,7 +71,7 @@ import lombok.NoArgsConstructor;
  *
  * @return the int
  */
-@EqualsAndHashCode
+//@EqualsAndHashCode
 
 @Entity
 @Table(name="alumnos")
@@ -102,6 +103,31 @@ public class Alumno {
 	@PrePersist
 	public void prePersist() {
 		this.createAt= new Date();
+	}
+	
+	
+	//sobreescribo el equals asteriscando el create porque si no,da problemas cuando hace el compare
+	//en las pruebas
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Alumno)) {
+			return false;
+		}
+		Alumno other = (Alumno) obj;
+		return Objects.equals(this.apellidos, other.apellidos)
+		//		&& Objects.equals(this.createAt, other.createAt)
+				&& Objects.equals(this.email, other.email)
+				&& Objects.equals(this.id, other.id)
+				&& Objects.equals(this.nombre, other.nombre);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(apellidos, createAt, email, id, nombre);
 	}
 
 	

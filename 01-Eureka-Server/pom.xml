@@ -27,7 +27,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime NECESARIO PARA EUREKA-->
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime 
+		NECESARIO PARA EUREKA DESDE EL JAVA 11-->
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
