@@ -17,12 +17,20 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.jgr.micro.app.usuarios.entity.Alumno;
 import com.jgr.micro.app.usuarios.repository.IAlumnoRepository;
@@ -31,16 +39,30 @@ import com.jgr.micro.app.usuarios.test.datos.CrearDatos;
 
 import io.vavr.collection.Stream;
 
-@SpringBootTest
+
+//para que resuelva lo del puerto aleatorio en el que se levanta
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class IAlumnoServiceTest {
 	@MockBean
 	IAlumnoRepository alumnoRepository;
 
 	@Autowired
 	IAlumnoService alumnoService;
+	@Autowired
+	private static MockMvc mockMvc;
+	//@Autowired
+	 //private WebApplicationContext webApplicationContext;
+	//@Autowired
+	 //private static ServletWebServerApplicationContext servletWebServerApplicationContext;
+	//@Autowired
+	//private WebTestClient client;
+	 
 
-	@BeforeAll
+	@BeforeAll	
 	static void setUpBeforeClass() throws Exception {
+		//mockMvc = MockMvcBuilders.webAppContextSetup(servletWebServerApplicationContext).build();
+	//			mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+		
 	}
 
 	@AfterAll
@@ -53,6 +75,7 @@ class IAlumnoServiceTest {
 		when(alumnoRepository.findById(2L)).thenReturn(CrearDatos.creaAlumno2());
 		when(alumnoRepository.findById(3L)).thenReturn(CrearDatos.creaAlumno3());
 		when(alumnoRepository.findAll()).thenReturn(CrearDatos.listaAlumnos());
+		
 
 	}
 
@@ -61,7 +84,9 @@ class IAlumnoServiceTest {
 	}
 
 	@Test
+	@DisplayName("en test findAll")
 	void testFindAll() {
+
 
 		List<Alumno> lista = (List<Alumno>) alumnoRepository.findAll();
 		
