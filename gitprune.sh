@@ -24,9 +24,9 @@ inicio_ns=`date +%s%N`
 inicio=`date +%s`
 
 # Haciendo los git add/commit/push por steps
-git add .
-git add *
-git add -A
+git add . -v
+git add * -v
+git add -A -v
 git maintenance start
 
 while read a b c
