@@ -46,6 +46,106 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ConfigEurekaPropertiesDev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/eureka-server/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"eureka-server",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigSpring-Gateway-ServerPropertiesDev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/spring-gateway-server/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"spring-gateway-server",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigServicio-alumnosPropertiesDev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/servicio-alumnos/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-alumnos",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigServicio-alumnosPropertiesProd",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/servicio-alumnos/prod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-alumnos",
+								"prod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigZuul-serverPropertiesdev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/zuul-server/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"zuul-server",
+								"dev"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -193,6 +293,46 @@
 						"v3",
 						"api-docs",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListaAlumnosZuul",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/api/alumnos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"alumnos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListaAlumnosSpringGateway",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/api/alumnos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"api",
+						"alumnos"
 					]
 				}
 			},
