@@ -7,9 +7,10 @@ server:
 spring:
   application:
     name: spring-gateway-server
-  config:
-    import:
-    - configserver:http://localhost:8888
   profiles:
     active:
-    - dev       
+    - dev
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+               
