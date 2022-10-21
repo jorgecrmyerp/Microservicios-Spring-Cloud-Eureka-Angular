@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-21 a ver si se registran en eureka"
+message="$(date)2022-10-21 a falta de crear un servicio generico para probar propiedades y cookies"
 fi
 
 start=`date +%s`
