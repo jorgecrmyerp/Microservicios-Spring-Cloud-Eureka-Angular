@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jgr.micro.app.config.server</groupId>
-	<artifactId>00-Config-Server</artifactId>
+	<artifactId>00-Spring-Config-Server</artifactId>
 	<version>V1</version>
 	<name>configserver</name>
 	<description>ConfigServer</description>
