@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-21 creados properties para configuracion cloud"
+message="$(date)2022-10-21 a ver si se registran en eureka"
 fi
 
 start=`date +%s`
