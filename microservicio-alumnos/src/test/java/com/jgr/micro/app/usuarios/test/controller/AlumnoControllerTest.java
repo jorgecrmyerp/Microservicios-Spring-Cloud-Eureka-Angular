@@ -22,12 +22,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,20 +36,21 @@ import com.jgr.micro.app.usuarios.entity.Alumno;
 import com.jgr.micro.app.usuarios.service.IAlumnoService;
 import com.jgr.micro.app.usuarios.test.datos.CrearDatos;
 
+
 //@WebMvcTest(AlumnoController.class)
 //para que resuelva lo del puerto aleatorio en el que se levanta
 //@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
 @WebMvcTest(AlumnoController.class)
 class AlumnoControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 	
-
+			
 	@MockBean
 	private IAlumnoService alumnoService;
-	
-	
+		
 	private ObjectMapper objectMapper;
 
 	@BeforeAll
@@ -63,6 +64,7 @@ class AlumnoControllerTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		objectMapper = new ObjectMapper();
+		
 	}
 
 	@AfterEach

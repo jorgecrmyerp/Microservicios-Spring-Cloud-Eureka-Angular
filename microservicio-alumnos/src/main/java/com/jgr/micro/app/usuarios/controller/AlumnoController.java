@@ -3,6 +3,8 @@ package com.jgr.micro.app.usuarios.controller;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Properties;
+import java.util.TreeMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -181,17 +183,34 @@ public class AlumnoController {
 		Map<String, String> json = new HashMap<>();
 
 		if (entorno.getActiveProfiles().length > 0 
-				&& 
-				(entorno.getActiveProfiles()[0].equals("dev")|| entorno.getActiveProfiles()[0].equals("prod"))
-						) {
+//				&&	(entorno.getActiveProfiles()[0].equals("dev")|| entorno.getActiveProfiles()[0].equals("prod"))
+						) 
+		{
 			
-			json.put("puerto", String.valueOf(webServerAppCtxt.getWebServer().getPort()));
-			json.put("instancia", instanceId);
-			json.put("entorno",entorno.getActiveProfiles()[0]);
-			json.put("default",entorno.getDefaultProfiles()[0]);
+			json.put("**PUERTO**", String.valueOf(webServerAppCtxt.getWebServer().getPort()));
+			json.put("**INSTANCIA**", instanceId);
+			json.put("**ENTORNO**",entorno.getActiveProfiles()[0]);
+			json.put("**DEFAULT**",entorno.getDefaultProfiles()[0]);
 		}
-
-		return new ResponseEntity<Map<String, String>>(json, HttpStatus.OK);
+		//propiedades
+		
+		Properties properties = System.getProperties();
+		properties.forEach((k, v)->
+		json.put("Properties->"+k.toString(), v.toString())		
+		);
+		
+		//entorno
+		
+		 Map<String, String> getenv = System.getenv();
+		 getenv.forEach((k, v)->
+		 json.put("Variables Ambiente->"+k.toString(), v.toString())
+		 
+		 );
+		 //PARA QUE LO ORDENE
+		 TreeMap<String,String> ordenado= new TreeMap<>(json);
+		
+		
+		return new ResponseEntity<Map<String, String>>(ordenado, HttpStatus.OK);
 	}
 
 }
