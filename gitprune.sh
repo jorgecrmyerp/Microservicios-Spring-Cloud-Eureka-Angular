@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-21 LISTADO PROPIEDADES EN CONTROLADOR ALUMNOS"
+message="$(date)2022-10-21 zuul+gateway"
 fi
 
 start=`date +%s`

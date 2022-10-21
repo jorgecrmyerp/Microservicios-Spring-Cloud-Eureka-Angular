@@ -36,7 +36,7 @@ import brave.Tracer;
  * The Class AlumnoController.
  */
 @RestController
-@RequestMapping("/api/alumno")
+//@RequestMapping("/api/alumnos")
 public class AlumnoController {
 
 	/** The logger. */

@@ -112,6 +112,68 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ListaAlumnosGateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListaAlumnosZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/alumnos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"alumnos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioAlumnosZuulConfiguracion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/alumnos/obtener-configuracion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"alumnos",
+								"obtener-configuracion"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
