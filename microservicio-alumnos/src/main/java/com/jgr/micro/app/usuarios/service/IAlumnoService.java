@@ -3,44 +3,15 @@ package com.jgr.micro.app.usuarios.service;
 import java.util.Optional;
 
 import com.jgr.micro.app.usuarios.entity.Alumno;
+import com.jgr.micro.generic.services.IGenericService;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Interface IAlumnoService.
+ * HEREDA DE LA INTERFAZ GENERICA del microservicio generic. como parametro le paso la entidad,que en este
+ * caso es alumno
  */
-public interface IAlumnoService {
-	
-	/**
-	 * Find all.
-	 *
-	 * @return the iterable
-	 */
-	public Iterable <Alumno> findAll();
-	
-	/**
-	 * Find by id.
-	 *
-	 * @param id the id
-	 * @return the optional
-	 */
-	public Optional<Alumno> findById(Long id);
-	
-	/**
-	 * Save.
-	 *
-	 * @param al the al
-	 * @return the alumno
-	 */
-	public Alumno save(Alumno al);
-	
-	
-	/**
-	 * Delete by id.
-	 *
-	 * @param id the id
-	 */
-	public void deleteById(Long id);
-	
+public interface IAlumnoService extends IGenericService<Alumno>{
 	
 
 }

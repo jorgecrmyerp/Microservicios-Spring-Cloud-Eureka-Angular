@@ -1,4 +1,4 @@
-package com.jgr.micro.common.repository.service;
+package com.jgr.micro.common.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
