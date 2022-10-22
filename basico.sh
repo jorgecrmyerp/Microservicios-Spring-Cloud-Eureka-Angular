@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date) 2022-10-21 SIN CONFIG SERVER"
+message="$(date) 2022-10-22 PRIMERA SUBIDA DEL DIA"
 fi
 
 git add .
