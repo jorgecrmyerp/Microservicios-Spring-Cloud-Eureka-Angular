@@ -219,12 +219,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8091/api/alumnos",
+							"raw": "http://localhost:8090/api/alumnos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8091",
+							"port": "8090",
 							"path": [
 								"api",
 								"alumnos"
@@ -274,6 +274,65 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "PostInsertAlumnosGateway",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n       \r\n        \"nombre\": \"ALUMNO1\",\r\n        \"apellidos\": \"APELLIDO1\",\r\n        \"email\": \"email1@asdf.com\",\r\n        \"createAt\": \"2022-10-22T07:59:47.112+02:00\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/alumnos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"alumnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutUpdateAlumnosGateway",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"nombre\": \"ALUMNO1\",\r\n    \"apellidos\": \"APELLIDO1\",\r\n    \"email\": \"email1@asdf.com\",\r\n    \"createAt\": \"2022-10-22T08:01:50.997+02:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/alumnos/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"alumnos",
+								"6"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -293,46 +352,6 @@
 						"v3",
 						"api-docs",
 						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ListaAlumnosZuul",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8090/api/alumnos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8090",
-					"path": [
-						"api",
-						"alumnos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ListaAlumnosSpringGateway",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8091/api/alumnos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8091",
-					"path": [
-						"api",
-						"alumnos"
 					]
 				}
 			},
