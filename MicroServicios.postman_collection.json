@@ -463,6 +463,47 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ConfigServicio-ConfiguracionPropertiesDev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/servicio-configuracion/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-configuracion",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerWebSpringGateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/configuracion/obtener-web",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-web"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

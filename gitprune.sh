@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-22 CORREGIDO PROPERTIES GATEWAY PARA QUE ENTRE MICRO CONFIGURACION"
+message="$(date)2022-10-22 FUNCIONA SPRING GATEWAY"
 fi
 
 start=`date +%s`
