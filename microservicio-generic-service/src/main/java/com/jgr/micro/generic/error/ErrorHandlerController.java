@@ -1,4 +1,4 @@
-package com.jgr.micro.app.usuarios.error;
+package com.jgr.micro.generic.error;
 
 import java.util.Date;
 

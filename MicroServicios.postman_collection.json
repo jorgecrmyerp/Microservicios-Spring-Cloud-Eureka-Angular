@@ -214,17 +214,38 @@
 					"response": []
 				},
 				{
+					"name": "ServicioAlumnosZuulConfiguracion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/alumnos/obtener-configuracion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"alumnos",
+								"obtener-configuracion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "ListaAlumnosGateway",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8091/api/alumnos",
+							"raw": "http://localhost:8090/api/alumnos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8091",
+							"port": "8090",
 							"path": [
 								"api",
 								"alumnos"
@@ -255,12 +276,50 @@
 					"response": []
 				},
 				{
-					"name": "ServicioAlumnosZuulConfiguracion",
+					"name": "PostInsertAlumnosGateway",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n       \r\n        \"nombre\": \"ALUMNO1\",\r\n        \"apellidos\": \"APELLIDO1\",\r\n        \"email\": \"email1@asdf.com\",\r\n        \"createAt\": \"2022-10-22T07:59:47.112+02:00\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8090/api/alumnos/obtener-configuracion",
+							"raw": "http://localhost:8090/api/alumnos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"alumnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutUpdateAlumnosGateway",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"nombre\": \"ALUMNO1\",\r\n    \"apellidos\": \"APELLIDO1\",\r\n    \"email\": \"email1@asdf.com\",\r\n    \"createAt\": \"2022-10-22T08:01:50.997+02:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/alumnos/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -269,7 +328,178 @@
 							"path": [
 								"api",
 								"alumnos",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Servicio-Configuracion",
+			"item": [
+				{
+					"name": "ServicioConfiguracionDev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/servicio-configuracion/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-configuracion",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerConfiguracionZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/obtener-configuracion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
 								"obtener-configuracion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerPropertiesZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/obtener-properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerAmbienteZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/obtener-ambiente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-ambiente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerWebZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/obtener-web",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-web"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionActuator",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/actuator",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
+								"actuator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigServicio-ConfiguracionPropertiesDev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/servicio-configuracion/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-configuracion",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerWebSpringGateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/configuracion/obtener-web",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-web"
 							]
 						}
 					},
@@ -293,46 +523,6 @@
 						"v3",
 						"api-docs",
 						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ListaAlumnosZuul",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8090/api/alumnos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8090",
-					"path": [
-						"api",
-						"alumnos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ListaAlumnosSpringGateway",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8091/api/alumnos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8091",
-					"path": [
-						"api",
-						"alumnos"
 					]
 				}
 			},

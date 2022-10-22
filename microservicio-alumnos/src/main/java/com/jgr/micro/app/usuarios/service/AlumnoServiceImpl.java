@@ -8,12 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jgr.micro.app.usuarios.entity.Alumno;
 import com.jgr.micro.app.usuarios.repository.IAlumnoRepository;
+import com.jgr.micro.generic.services.GenericServiceImpl;
 
 /**
  * The Class AlumnoServiceImpl.
+ * Hereda de la clase generica GENERICSERVICEIMPL,como parametros le pasamos la entidad
+ * y el repositorio
  */
 @Service
-public class AlumnoServiceImpl implements IAlumnoService{
+public class AlumnoServiceImpl extends GenericServiceImpl<Alumno, IAlumnoRepository> implements IAlumnoService{
 	
 	/** The i alumno repository. */
 	@Autowired

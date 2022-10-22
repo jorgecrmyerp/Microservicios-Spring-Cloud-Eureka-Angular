@@ -1,0 +1,25 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8091
+spring:
+  application:
+    name: spring-gateway-server
+    ##spring.config.import=optional:configserver
+  config:
+    import: "optional:configserver:http://localhost:8888" 
+##     configserver=http://localhost:8888
+##    import: "optional:configserver:"    
+##  cloud:
+##    gateway:
+##      routes:
+##      - id: servicio-alumnos
+##        uri: lb://servicio-alumnos 
+##        predicates:
+##          - Path=/api/alumnos/**
+##        filters:
+##          - StripPrefix=2 ##por el api y por alumnos 
+      
+        
