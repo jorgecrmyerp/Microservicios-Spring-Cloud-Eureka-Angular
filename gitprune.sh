@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-21 a falta de crear un servicio generico para probar propiedades y cookies"
+message="$(date)2022-10-22 GATEWAY SERVER FUNCIONA DESDE GIT"
 fi
 
 start=`date +%s`
