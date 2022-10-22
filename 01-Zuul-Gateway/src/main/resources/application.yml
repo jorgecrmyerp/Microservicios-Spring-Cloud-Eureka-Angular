@@ -12,3 +12,6 @@ zuul:
     alumnos:
       path: /api/alumnos/**
       service-id: servicio-alumnos
+    configuracion:
+      path: /api/configuracion/**
+      service-id: servicio-configuracion  

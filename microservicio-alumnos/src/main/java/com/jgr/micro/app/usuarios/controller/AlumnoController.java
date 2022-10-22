@@ -32,7 +32,6 @@ import org.springframework.core.env.Environment;
 
 import brave.Tracer;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AlumnoController.
  */
@@ -51,20 +50,6 @@ public class AlumnoController {
 	 */
 	@Autowired
 	private IAlumnoService iAlumnoService;
-
-	/** The entorno. */
-	// para obtener el puerto
-	@Autowired
-	private ServletWebServerApplicationContext webServerAppCtxt;
-
-	/** The entorno. */
-	// para obtener el entorno de ejecucion
-	@Autowired
-	private Environment entorno;
-
-	/** The instance id. */
-	@Value("${eureka.instance.instance-id}")
-	private String instanceId;
 
 	/**
 	 * Listar.
@@ -172,48 +157,6 @@ public class AlumnoController {
 
 		return ResponseEntity.noContent().build();
 
-	}
-
-	/**
-	 * Obtener config.
-	 *
-	 * @param puerto the puerto
-	 * @return the response entity
-	 */
-	@GetMapping("/obtener-configuracion")
-	public ResponseEntity<?> obtenerConfig() {
-
-		Map<String, String> json = new HashMap<>();
-
-		if (entorno.getActiveProfiles().length > 0 
-//				&&	(entorno.getActiveProfiles()[0].equals("dev")|| entorno.getActiveProfiles()[0].equals("prod"))
-						) 
-		{
-			
-			json.put("**PUERTO**", String.valueOf(webServerAppCtxt.getWebServer().getPort()));
-			json.put("**INSTANCIA**", instanceId);
-			json.put("**ENTORNO**",entorno.getActiveProfiles()[0]);
-			json.put("**DEFAULT**",entorno.getDefaultProfiles()[0]);
-		}
-		//propiedades
-		
-		Properties properties = System.getProperties();
-		properties.forEach((k, v)->
-		json.put("Properties->"+k.toString(), v.toString())		
-		);
-		
-		//entorno
-		
-		 Map<String, String> getenv = System.getenv();
-		 getenv.forEach((k, v)->
-		 json.put("Variables Ambiente->"+k.toString(), v.toString())
-		 
-		 );
-		 //PARA QUE LO ORDENE
-		 TreeMap<String,String> ordenado= new TreeMap<>(json);
-		
-		
-		return new ResponseEntity<Map<String, String>>(ordenado, HttpStatus.OK);
 	}
 
 }
