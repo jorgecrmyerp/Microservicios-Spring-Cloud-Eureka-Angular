@@ -214,6 +214,27 @@
 					"response": []
 				},
 				{
+					"name": "ServicioAlumnosZuulConfiguracion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/alumnos/obtener-configuracion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"alumnos",
+								"obtener-configuracion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "ListaAlumnosGateway",
 					"request": {
 						"method": "GET",
@@ -249,27 +270,6 @@
 								"api",
 								"alumnos",
 								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ServicioAlumnosZuulConfiguracion",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8090/api/alumnos/obtener-configuracion",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8090",
-							"path": [
-								"api",
-								"alumnos",
-								"obtener-configuracion"
 							]
 						}
 					},
@@ -329,6 +329,136 @@
 								"api",
 								"alumnos",
 								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Servicio-Configuracion",
+			"item": [
+				{
+					"name": "ServicioConfiguracionDev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/servicio-configuracion/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-configuracion",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerConfiguracionZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/obtener-configuracion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-configuracion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerPropertiesZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/obtener-properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerAmbienteZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/obtener-ambiente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-ambiente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerWebZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/obtener-web",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-web"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionActuator",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/configuracion/actuator",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"configuracion",
+								"actuator"
 							]
 						}
 					},

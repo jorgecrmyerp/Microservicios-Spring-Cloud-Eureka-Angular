@@ -11,13 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * The Class ConfigController.
@@ -88,6 +86,21 @@ public class ConfigController {
 		// PARA QUE LO ORDENE
 		TreeMap<String, String> ordenado = new TreeMap<>(json);
 
+		return new ResponseEntity<Map<String, String>>(ordenado, HttpStatus.OK);
+	}
+	@GetMapping("/obtener-web")
+	public ResponseEntity<?> obtenerWeb() {
+		
+		Map<String, String> json = new HashMap<>();
+		
+		json.put("Nombre Aplicacion", webServerAppCtxt.getApplicationName());
+		json.put("Nombre Servidor", webServerAppCtxt.getServerNamespace());
+		//Map<String, String> getenv = webServerAppCtxt.getApplicationListeners().t;
+		
+
+		// PARA QUE LO ORDENE
+		TreeMap<String, String> ordenado = new TreeMap<>(json);
+		
 		return new ResponseEntity<Map<String, String>>(ordenado, HttpStatus.OK);
 	}
 
