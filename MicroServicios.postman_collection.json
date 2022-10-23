@@ -240,12 +240,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8090/api/alumnos",
+							"raw": "http://localhost:8091/api/alumnos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8091",
 							"path": [
 								"api",
 								"alumnos"
@@ -500,6 +500,31 @@
 								"api",
 								"configuracion",
 								"obtener-web"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cursos",
+			"item": [
+				{
+					"name": "CursosRequestGenerico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/cursos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"cursos"
 							]
 						}
 					},
