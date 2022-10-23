@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-22 CREADO COMMONS PARA MODELO DATOS ALUMNO"
+message="$(date)2022-10-23 PRIMERA SUBIDA DEL DIA"
 fi
 
 start=`date +%s`
