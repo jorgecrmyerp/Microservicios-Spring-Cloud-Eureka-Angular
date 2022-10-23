@@ -1,4 +1,4 @@
-package com.jgr.micro.app.usuarios.service;
+package com.jgr.micro.app.alumnos.service;
 
 import java.util.Optional;
 

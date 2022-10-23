@@ -1,4 +1,4 @@
-package com.jgr.micro.app.usuarios.controller;
+package com.jgr.micro.app.alumnos.controller;
 
 import java.util.Optional;
 
@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.jgr.micro.app.usuarios.service.IAlumnoService;
+import com.jgr.micro.app.alumnos.service.IAlumnoService;
 import com.jgr.micro.generic.controller.GenericController;
 import com.jgr.modelo.microservicio.datos.entity.Alumno;
 

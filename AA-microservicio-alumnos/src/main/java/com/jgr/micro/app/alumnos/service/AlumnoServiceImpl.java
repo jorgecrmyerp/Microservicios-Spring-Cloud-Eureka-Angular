@@ -1,4 +1,4 @@
-package com.jgr.micro.app.usuarios.service;
+package com.jgr.micro.app.alumnos.service;
 
 import java.util.Optional;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jgr.modelo.microservicio.datos.entity.Alumno;
-import com.jgr.micro.app.usuarios.repository.IAlumnoRepository;
+import com.jgr.micro.app.alumnos.repository.IAlumnoRepository;
 import com.jgr.micro.generic.services.GenericServiceImpl;
 
 /**

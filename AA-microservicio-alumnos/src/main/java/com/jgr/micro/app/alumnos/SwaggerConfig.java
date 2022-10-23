@@ -1,4 +1,4 @@
-package com.jgr.micro.app.usuarios;
+package com.jgr.micro.app.alumnos;
 
 
 
@@ -18,7 +18,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.jgr.micro.app.usuarios.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.jgr.micro.app.alumnos.controller"))
 								.paths(PathSelectors.ant("/api/alumno/*")).build(); //solo para esta ruta
 			//	.paths(PathSelectors.any()).build();// para todos
 		//.paths(PathSelectors.regex("/.*")).build();
@@ -29,7 +29,7 @@ public class SwaggerConfig {
     public Docket api() { 
         return new Docket(DocumentationType.OAS_30)  
           .select()                                  
-          .apis(RequestHandlerSelectors.basePackage("com.jgr.micro.app.usuarios.controller"))              
+          .apis(RequestHandlerSelectors.basePackage("com.jgr.micro.app.alumnos.controller"))              
           .paths(PathSelectors.any())                          
           .build();                                           
     }

@@ -1,4 +1,4 @@
-package com.jgr.micro.app.usuarios.repository;
+package com.jgr.micro.app.alumnos.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

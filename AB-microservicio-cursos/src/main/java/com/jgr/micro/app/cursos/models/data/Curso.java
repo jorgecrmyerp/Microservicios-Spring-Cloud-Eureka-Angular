@@ -19,13 +19,16 @@ import javax.persistence.TemporalType;
 import com.jgr.modelo.microservicio.datos.entity.Alumno;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+
+@Data
 //@NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Builder
 @Entity
 @Table(name = "cursos")
 public class Curso {
@@ -62,5 +65,7 @@ public class Curso {
 		this.alumnos.remove(alumno);
 
 	}
+	
+	
 
 }
