@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date) 2022-10-22 ++microservicio configuracion"
+message="$(date) 2022-10-22 ++query insert curso_alumnos"
 fi
 
 git add .
