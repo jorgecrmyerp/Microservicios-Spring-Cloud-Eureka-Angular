@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date) 2022-10-22 ++query insert curso_alumnos"
+message="$(date)2022-10-24 ++otra prueba resilience4j.circuitbreaker"
 fi
 
 git add .

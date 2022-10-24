@@ -135,13 +135,13 @@ public class ConfigController {
 	@GetMapping("/obtener-error")
 	public ResponseEntity<?> obtenerError(){
 		
-		return this.circuitBreakerFactory.create("defecto")//inventado el nombre¿?
+		return this.circuitBreakerFactory.create("configuracionproperties")//inventado el nombre¿?
 				.run(()->provocarErrorThrow(),e->metodoAlternativoObtenerError());
 
 	}
 	
 	@GetMapping("/obtener-error-alternativo-anotado")
-	@CircuitBreaker(name="defecto", fallbackMethod = "metodoAlternativoObtenerError")
+	@CircuitBreaker(name="configuracionproperties", fallbackMethod = "metodoAlternativoObtenerError")
 	public ResponseEntity<?> obtenerErrorAlternativo(){
 		
 		String error = this.provocarErrorThrow().toString();
