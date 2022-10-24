@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jgr.micro.generic.service</groupId>
-	<artifactId>ZZ-microservicio-generic-service</artifactId>
+	<artifactId>ZZ-microservicio-generic-service-controller</artifactId>
 	<version>V1</version>
 	<name>microservicio-common-service</name>
 	<description>Capa Servicio y Repositorio Comun</description>

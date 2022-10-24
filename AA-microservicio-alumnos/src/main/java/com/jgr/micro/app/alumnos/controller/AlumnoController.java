@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,17 @@ import com.jgr.modelo.microservicio.datos.entity.Alumno;
 @RestController
 //si se modifica el environment o algo en git
 @RefreshScope
+
+
 //@RequestMapping("/api/alumnos")
 public class AlumnoController extends GenericController<Alumno, IAlumnoService>{
 
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(AlumnoController.class);
-
+	
+	//circuitbreaker,control de errores
+	@Autowired
+	private CircuitBreakerFactory circuitBreakerFactory;
 	
 	//@Autowired
 	//no hace falta inyectar el servicio porque como hereda de GenericController

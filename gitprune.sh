@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-24 CREADO MICROSERVICIO CURSOS"
+message="$(date)2022-10-24 empezando Resilience4j"
 fi
 
 start=`date +%s`

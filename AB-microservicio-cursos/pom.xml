@@ -68,7 +68,7 @@
 		<!-- HEREDA DE ZZ-MICROSERVICIO-GENERIC-SERVICE-->
 		<dependency>
 			<groupId>com.jgr.micro.generic.service</groupId>
-			<artifactId>ZZ-microservicio-generic-service</artifactId>
+			<artifactId>ZZ-microservicio-generic-service-controller</artifactId>
 			<version>V1</version>
 		</dependency>
 
@@ -80,6 +80,10 @@
 			-->
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
