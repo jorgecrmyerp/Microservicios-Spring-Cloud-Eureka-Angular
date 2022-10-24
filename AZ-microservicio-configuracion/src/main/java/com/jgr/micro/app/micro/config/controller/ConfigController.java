@@ -1,4 +1,21 @@
 package com.jgr.micro.app.micro.config.controller;
+import java.util.concurrent.CompletableFuture;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -118,15 +135,17 @@ public class ConfigController {
 	@GetMapping("/obtener-error")
 	public ResponseEntity<?> obtenerError(){
 		
-		return this.circuitBreakerFactory.create("error")//inventado el nombre¿?
+		return this.circuitBreakerFactory.create("defecto")//inventado el nombre¿?
 				.run(()->provocarErrorThrow(),e->metodoAlternativoObtenerError());
 
 	}
 	
-	@GetMapping("/obtener-error-alternativo")
+	@GetMapping("/obtener-error-alternativo-anotado")
 	@CircuitBreaker(name="defecto", fallbackMethod = "metodoAlternativoObtenerError")
 	public ResponseEntity<?> obtenerErrorAlternativo(){
-		return ResponseEntity.status(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED).body(this.provocarErrorThrow());
+		
+		String error = this.provocarErrorThrow().toString();
+		return ResponseEntity.status(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED).body(error);
 		
 	}
 
@@ -142,17 +161,35 @@ public class ConfigController {
 		return ResponseEntity.status(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED).body(salida);
 
 	}
-	@GetMapping("/obtener-timeout")
 	
-	public ResponseEntity<?> obtenerTimeout(){
+	
+	@CircuitBreaker(name="defecto", fallbackMethod = "metodoAlternativo2")
+	@TimeLimiter(name="defecto")
+	@GetMapping("/obtener-timeout")
+	public CompletableFuture<String> obtenerErrorTimeout() {
+		obtenerTimeout();
+		
+		String retorno=null;
+		
+		return CompletableFuture.supplyAsync(()-> retorno);
+	}
+	
+	
+	
+	
+	
+	
+	public CompletableFuture<String> obtenerTimeout(){
 
 		try {
 			TimeUnit.SECONDS.sleep(10L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		String retorno = null;
 
-		return ResponseEntity.status(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED).body(null);
+		return CompletableFuture.supplyAsync(()->retorno);
 	}
 
 
@@ -161,8 +198,18 @@ public class ConfigController {
 
 		Map<String, String> json = new HashMap<>();
 
-		json.put("MetodoAlternativo", "MetodoAlternativoObtenerError");
+		json.put("MetodoAlternativo", " Este es el mensaje de MetodoAlternativoObtenerError");
 		return ResponseEntity.status(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED).body(json);
+
+
+	}
+	
+	public CompletableFuture<?> metodoAlternativoObtenerTimeout(){
+
+		Map<String, String> json = new HashMap<>();
+
+		json.put("MetodoAlternativo", " Este es el mensaje de MetodoAlternativoObtenerError");
+		return CompletableFuture.supplyAsync(()->json);
 
 
 	}

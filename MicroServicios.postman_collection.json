@@ -504,6 +504,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerError",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/configuracion/obtener-error",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerErrorAlternativo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/configuracion/obtener-error-alternativo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-error-alternativo"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
