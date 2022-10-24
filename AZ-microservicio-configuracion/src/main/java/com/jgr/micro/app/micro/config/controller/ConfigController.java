@@ -135,13 +135,13 @@ public class ConfigController {
 	@GetMapping("/obtener-error")
 	public ResponseEntity<?> obtenerError(){
 		
-		return this.circuitBreakerFactory.create("configuracionproperties")//inventado el nombre¿?
+		return this.circuitBreakerFactory.create("defecto")//inventado el nombre¿?
 				.run(()->provocarErrorThrow(),e->metodoAlternativoObtenerError());
 
 	}
 	
 	@GetMapping("/obtener-error-alternativo-anotado")
-	@CircuitBreaker(name="configuracionproperties", fallbackMethod = "metodoAlternativoObtenerError")
+	@CircuitBreaker(name="defecto", fallbackMethod = "metodoAlternativoObtenerError")
 	public ResponseEntity<?> obtenerErrorAlternativo(){
 		
 		String error = this.provocarErrorThrow().toString();
@@ -162,8 +162,7 @@ public class ConfigController {
 
 	}
 	
-	
-	@CircuitBreaker(name="defecto", fallbackMethod = "metodoAlternativo2")
+	@CircuitBreaker(name="defecto", fallbackMethod = "metodoAlternativoObtenerTimeout")
 	@TimeLimiter(name="defecto")
 	@GetMapping("/obtener-timeout")
 	public CompletableFuture<String> obtenerErrorTimeout() {
@@ -175,19 +174,17 @@ public class ConfigController {
 	}
 	
 	
-	
-	
-	
-	
 	public CompletableFuture<String> obtenerTimeout(){
 
+		
+		logger.debug("en obtener timeout");
 		try {
-			TimeUnit.SECONDS.sleep(10L);
+			TimeUnit.SECONDS.sleep(20L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		
-		String retorno = null;
+		String retorno = "ConfigController CompletableFuture obtenerTimeout";
 
 		return CompletableFuture.supplyAsync(()->retorno);
 	}
@@ -209,7 +206,12 @@ public class ConfigController {
 		Map<String, String> json = new HashMap<>();
 
 		json.put("MetodoAlternativo", " Este es el mensaje de MetodoAlternativoObtenerError");
-		return CompletableFuture.supplyAsync(()->json);
+		
+		
+		ResponseEntity<?> respuesta =new ResponseEntity<Map<String, String>>(json, HttpStatus.OK);
+		
+		
+		return CompletableFuture.supplyAsync(()->respuesta);
 
 
 	}

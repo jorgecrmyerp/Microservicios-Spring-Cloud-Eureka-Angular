@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-24 NO FUNCIONA EL POR DEFECTO EN RESILIENCE4J"
+message="$(date)2022-10-24 ++otra prueba resilience4j.circuitbreaker"
 fi
 
 start=`date +%s`
