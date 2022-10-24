@@ -333,6 +333,77 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "BuscaAlumnoIDZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/alumnos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"alumnos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaAlumnoIDGateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCreaAlumnoGateway",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"nombre\": \"ALUMNO1\",\r\n    \"apellidos\": \"APELLIDO1\",\r\n    \"email\": \"email1@asdf.com\",\r\n    \"createAt\": \"2022-10-22T08:01:50.997+02:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/alumnos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"alumnos"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -449,12 +520,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8090/api/configuracion/actuator",
+							"raw": "http://localhost:8091/api/configuracion/actuator",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8091",
 							"path": [
 								"api",
 								"configuracion",
@@ -532,7 +603,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8091/api/configuracion/obtener-error-alternativo",
+							"raw": "http://localhost:8091/api/configuracion/obtener-error-alternativo-anotado",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -541,7 +612,28 @@
 							"path": [
 								"api",
 								"configuracion",
-								"obtener-error-alternativo"
+								"obtener-error-alternativo-anotado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioConfiguracionObtenerTimeout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/configuracion/obtener-timeout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"configuracion",
+								"obtener-timeout"
 							]
 						}
 					},
@@ -670,6 +762,66 @@
 								"cursos",
 								"3",
 								"eliminar-alumno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditarAlumnosCursosGateway",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \r\n        \"nombre\": \"Curso8\",\r\n        \"createAt\": \"2022-10-24T18:21:24.364+02:00\",\r\n        \"alumnos\": [\r\n            {\r\n                \"id\": 1,\r\n                \"nombre\": \"ALUMNO1\",\r\n                \"apellidos\": \"APELLIDO1\",\r\n                \"email\": \"email1@asdf.com\",\r\n                \"createAt\": \"2022-10-24T18:21:24.360+02:00\"\r\n            }\r\n        ]\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/cursos/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"cursos",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreaCursoGateway",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \r\n        \"nombre\": \"Curso8\",\r\n        \"createAt\": \"2022-10-24T18:21:24.364+02:00\",\r\n        \"alumnos\": []\r\n            \r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/cursos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"cursos",
+								""
 							]
 						}
 					},

@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
+import brave.Tracer;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 
@@ -69,6 +68,9 @@ public class ConfigController {
 	//circuitbreaker,control de errores
 	@Autowired
 	private CircuitBreakerFactory circuitBreakerFactory;
+	
+	//para zipkin
+	private Tracer tracer;
 
 	@GetMapping("/obtener-configuracion")
 	public ResponseEntity<?> obtenerConfig() {
@@ -135,16 +137,16 @@ public class ConfigController {
 	@GetMapping("/obtener-error")
 	public ResponseEntity<?> obtenerError(){
 		
-		return this.circuitBreakerFactory.create("defecto")//inventado el nombre¿?
+		return this.circuitBreakerFactory.create("configcontroller")//inventado el nombre¿?
 				.run(()->provocarErrorThrow(),e->metodoAlternativoObtenerError());
 
 	}
 	
 	@GetMapping("/obtener-error-alternativo-anotado")
-	@CircuitBreaker(name="defecto", fallbackMethod = "metodoAlternativoObtenerError")
+	@CircuitBreaker(name="configcontroller", fallbackMethod = "metodoAlternativoObtenerError")
 	public ResponseEntity<?> obtenerErrorAlternativo(){
 		
-		String error = this.provocarErrorThrow().toString();
+		String error = this.provocarErrorThrow().getBody().toString();
 		return ResponseEntity.status(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED).body(error);
 		
 	}
@@ -153,6 +155,9 @@ public class ConfigController {
 	public ResponseEntity<?> provocarErrorThrow(){
 
 		String salida=null;
+		
+		tracer.currentSpan().tag("Microservicio Configuracion->ConfigController", "provocarErrorThrow");
+		
 
 		if (salida==null) {
 			throw new IllegalStateException("Error provocado");
@@ -162,8 +167,8 @@ public class ConfigController {
 
 	}
 	
-	@CircuitBreaker(name="defecto", fallbackMethod = "metodoAlternativoObtenerTimeout")
-	@TimeLimiter(name="defecto")
+	@CircuitBreaker(name="configcontroller", fallbackMethod = "metodoAlternativoObtenerTimeout")
+	@TimeLimiter(name="configcontroller")
 	@GetMapping("/obtener-timeout")
 	public CompletableFuture<String> obtenerErrorTimeout() {
 		obtenerTimeout();
@@ -196,12 +201,13 @@ public class ConfigController {
 		Map<String, String> json = new HashMap<>();
 
 		json.put("MetodoAlternativo", " Este es el mensaje de MetodoAlternativoObtenerError");
-		return ResponseEntity.status(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED).body(json);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
 
 
 	}
 	
 	public CompletableFuture<?> metodoAlternativoObtenerTimeout(){
+		tracer.currentSpan().tag("Microservicio Configuracion->ConfigController", "metodoAlternativoObtenerTimeout");
 
 		Map<String, String> json = new HashMap<>();
 

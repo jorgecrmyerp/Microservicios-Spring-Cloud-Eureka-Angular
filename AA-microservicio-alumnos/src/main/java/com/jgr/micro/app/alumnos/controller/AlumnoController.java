@@ -17,6 +17,8 @@ import com.jgr.micro.app.alumnos.service.IAlumnoService;
 import com.jgr.micro.generic.controller.GenericController;
 import com.jgr.modelo.microservicio.datos.entity.Alumno;
 
+import brave.Tracer;
+
 
 /**
  * The Class AlumnoController.
@@ -33,6 +35,9 @@ public class AlumnoController extends GenericController<Alumno, IAlumnoService>{
 
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(AlumnoController.class);
+	
+	@Autowired
+	private Tracer tracer;
 	
 	//circuitbreaker,control de errores
 	@Autowired
@@ -56,6 +61,8 @@ public class AlumnoController extends GenericController<Alumno, IAlumnoService>{
 		Optional<Alumno> o = servicio.findById(id);
 
 		if (!o.isPresent()) {
+			logger.debug("Microservicio Alumno->actualizaAlumno");
+			tracer.currentSpan().tag("Microservicio Alumno->actualizaAlumno", "no existe alumno");
 			return ResponseEntity.notFound().build();
 		}
 		Alumno alDb = o.get();

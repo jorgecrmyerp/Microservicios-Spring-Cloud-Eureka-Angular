@@ -3,6 +3,8 @@ package com.jgr.micro.app.cursos.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,8 @@ import com.jgr.micro.generic.controller.GenericController;
 import com.jgr.micro.generic.error.IdNoEncontradoException;
 import com.jgr.modelo.microservicio.datos.entity.Alumno;
 
+import brave.Tracer;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class CursosController.
@@ -34,6 +38,12 @@ public class CursosController extends GenericController<Curso, ICursoService>{
 	@Autowired
 	private CircuitBreakerFactory circuitBreakerFactory;
 	
+	/** The logger. */
+	private final Logger logger = LoggerFactory.getLogger(CursosController.class);
+	
+	@Autowired
+	private Tracer tracer;
+	
 	/**
 	 * Actualiza datos de curso.
 	 *
@@ -46,7 +56,11 @@ public class CursosController extends GenericController<Curso, ICursoService>{
 
 		Optional<Curso> op = this.servicio.findById(id);
 		if (!op.isPresent()) {
-			throw ( new IdNoEncontradoException("id no encontrado editarAlumno->"+id.toString()));			
+			logger.debug("Microservicio Cursos->CursosController->editarAlumno()");
+			tracer.currentSpan().tag("Microservicio Cursos->CursosController->editarAlumno()", "no existe curso "+ id.toString());
+			throw ( 
+					new IdNoEncontradoException("id curso no encontrado editarAlumno->"+id.toString())
+					);			
 			//return ResponseEntity.notFound().build();
 		}
 
@@ -70,6 +84,7 @@ public class CursosController extends GenericController<Curso, ICursoService>{
 
 		Optional<Curso> op = this.servicio.findById(id);
 		if (!op.isPresent()) {
+			tracer.currentSpan().tag("Microservicio Cursos->CursosController->asignarAlumnos()", "no existe curso "+id.toString());
 			throw ( new IdNoEncontradoException("id no encontrado asignarAlumnos->"+id.toString()));			
 			//return ResponseEntity.notFound().build();
 		}
@@ -95,6 +110,7 @@ public class CursosController extends GenericController<Curso, ICursoService>{
 
 		Optional<Curso> op = this.servicio.findById(id);
 		if (!op.isPresent()) {
+			tracer.currentSpan().tag("Microservicio Cursos->CursosController->asignarAlumno()", "no existe curso "+ id.toString());
 			throw ( new IdNoEncontradoException("id no encontrado asignarAlumnos->"+id.toString()));			
 			//return ResponseEntity.notFound().build();
 		}
@@ -118,6 +134,7 @@ public class CursosController extends GenericController<Curso, ICursoService>{
 
 		Optional<Curso> op = this.servicio.findById(id);
 		if (!op.isPresent()) {
+			tracer.currentSpan().tag("Microservicio Cursos->CursosController->eliminarAlumnos()", "no existe curso "+ id.toString());
 			throw ( new IdNoEncontradoException("id no encontrado asignarAlumnos->"+id.toString()));			
 			//return ResponseEntity.notFound().build();
 		}
@@ -142,7 +159,9 @@ public class CursosController extends GenericController<Curso, ICursoService>{
 	public ResponseEntity<?> eliminarAlumno (@RequestBody Alumno alumno, @PathVariable Long id){
 
 		Optional<Curso> op = this.servicio.findById(id);
+		
 		if (!op.isPresent()) {
+			tracer.currentSpan().tag("Microservicio Cursos->CursosController->eliminarAlumno()", "no existe curso "+ id.toString());
 			throw ( new IdNoEncontradoException("id no encontrado asignarAlumnos->"+id.toString()));			
 			//return ResponseEntity.notFound().build();
 		}
