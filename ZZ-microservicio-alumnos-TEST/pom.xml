@@ -124,11 +124,11 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
-		
+
 		<!--INCLUYO EL COMMONS CON EL CONTROLADOR Y LA CAPA DE SERVICIO-->
 		<dependency>
 			<groupId>com.jgr.micro.generic.service</groupId>
-			<artifactId>microservicio-generic-service</artifactId>
+			<artifactId>ZZ-microservicio-generic-service</artifactId>
 			<version>V1</version>
 		</dependency>
 

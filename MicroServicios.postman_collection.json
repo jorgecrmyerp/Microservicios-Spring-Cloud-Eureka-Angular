@@ -529,6 +529,109 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ListaCursosGateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/cursos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListaCursosZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/cursos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"cursos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AsignarListaAlumnosCursoZuul",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 6,\r\n        \"nombre\": \"ALUMNO6\",\r\n        \"apellidos\": \"APELLIDO6\",\r\n        \"email\": \"email6@asdf.com\",\r\n        \"createAt\": \"2022-10-24T08:14:24.787+02:00\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/cursos/3/asignar-alumnos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"cursos",
+								"3",
+								"asignar-alumnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarAlummnoCursoZuul",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"id\": 6,\r\n        \"nombre\": \"ALUMNO6\",\r\n        \"apellidos\": \"APELLIDO6\",\r\n        \"email\": \"email6@asdf.com\",\r\n        \"createAt\": \"2022-10-24T08:14:24.787+02:00\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/cursos/3/eliminar-alumno",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"cursos",
+								"3",
+								"eliminar-alumno"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

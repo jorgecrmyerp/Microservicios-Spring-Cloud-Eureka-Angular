@@ -8,7 +8,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jgr.micro.app.cursos</groupId>
-	<artifactId>AB-microservicio-cursos-RepositoryRestResource</artifactId>
+	<artifactId>AZZ-microservicio-cursos-RepositoryRestResource</artifactId>
 	<version>V1</version>
 	<name>microservicio-cursos</name>
 	<description>Microservicio cursos</description>
