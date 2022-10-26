@@ -11,5 +11,7 @@ import com.jgr.modelo.microservicio.datos.entity.Alumno;
  */
 public interface IAlumnoService extends IGenericService<Alumno>{
 	
-
+	public Iterable<Alumno> buscaNombreOApellido(String term);
+	 
+	public Iterable<Alumno> findByNombreOrApellidosContainingIgnoreCase(String nombre,String apellido);
 }

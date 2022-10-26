@@ -51,6 +51,7 @@ public class GenericServiceImpl<E, R extends CrudRepository<E, Long>> implements
 	 * @return the E
 	 */
 	@Override
+	@Transactional
 	public E save(E entity) {
 		return repository.save(entity);
 	}
@@ -61,6 +62,7 @@ public class GenericServiceImpl<E, R extends CrudRepository<E, Long>> implements
 	 * @param id the id
 	 */
 	@Override
+	@Transactional
 	public void deleteById(Long id) {
 
 		repository.deleteById(id);

@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-26 primera subida del dia"
+message="$(date)2022-10-26 ++findByNombreOrApellidosContainingIgnoreCase"
 fi
 
 start=`date +%s`

@@ -1,5 +1,6 @@
 package com.jgr.micro.app.alumnos.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -7,7 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -74,5 +77,32 @@ public class AlumnoController extends GenericController<Alumno, IAlumnoService>{
 		return ResponseEntity.ok().body(servicio.save(alDb));
 
 	}
+	
+	@GetMapping("/nombreoapellido/{term}")
+	public ResponseEntity<?> buscaNombreOrApellido( @PathVariable String term) {
+		
+		return ResponseEntity.ok().body(servicio.buscaNombreOApellido(term));		
+		
+		
+	}
+	@GetMapping("/nombreoapellidoignoramayusculas/{term}")
+	public ResponseEntity<?> findByNombreOrApellidosContainingIgnoreCase( @PathVariable String nombre,@PathVariable String apellido) {
+		
+		List <Alumno> alumnos=(List<Alumno>) servicio.findByNombreOrApellidosContainingIgnoreCase(nombre, apellido);
+		
+		if (alumnos.size()>0) {
+			return 
+					ResponseEntity.ok().body(alumnos);
+		}
+		else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			
+		}
+		
+				
+		
+		
+	}
+	
 
 }
