@@ -85,10 +85,10 @@ public class AlumnoController extends GenericController<Alumno, IAlumnoService>{
 		
 		
 	}
-	@GetMapping("/nombreoapellidoignoramayusculas/{term}")
+	@GetMapping("/nombreoapellidoignoramayusculas/{nombre}/{apellido}")
 	public ResponseEntity<?> findByNombreOrApellidosContainingIgnoreCase( @PathVariable String nombre,@PathVariable String apellido) {
 		
-		List <Alumno> alumnos=(List<Alumno>) servicio.findByNombreOrApellidosContainingIgnoreCase(nombre, apellido);
+		List <Alumno> alumnos=(List<Alumno>) servicio.findByNombreContainingIgnoreCaseOrApellidosContainingIgnoreCase(nombre, apellido);
 		
 		if (alumnos.size()>0) {
 			return 

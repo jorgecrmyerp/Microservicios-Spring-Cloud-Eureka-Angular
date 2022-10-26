@@ -15,6 +15,12 @@ import com.jgr.micro.generic.services.GenericServiceImpl;
 @Service
 public class CursoServiceImpl extends GenericServiceImpl<Curso, ICursoRepository> implements ICursoService {
 
+	@Override
+	public Curso findCursoByAlumnoId(Long id) {
+		return repository.findCursoByAlumnoId(id);
+		
+	}
+
 	
 
 }

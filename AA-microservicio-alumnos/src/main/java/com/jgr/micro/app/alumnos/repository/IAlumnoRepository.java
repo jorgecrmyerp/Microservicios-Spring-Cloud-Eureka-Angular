@@ -17,7 +17,7 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, Long>{
 	
 	
 	/**
-	 * Busca nombre or apellido.
+	 * Busca en nombre o en apellido.
 	 *
 	 * @param term the term
 	 * @return the iterable
@@ -26,11 +26,15 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, Long>{
 	public Iterable<Alumno> buscaNombreOApellido(String term);
 	
 	/**
-	 * Find by name or apellidos containing ignore case.
+	 * Find by name or apellidos ignorando mayusculas/minusculas.
 	 *
-	 * @param term the term
+	 * @param nombre the nombre
+	 * @param apellido the apellido
 	 * @return the iterable
 	 */
-	public Iterable<Alumno> findByNombreOrApellidosContainingIgnoreCase(String nombre,String apellido);
+	public Iterable<Alumno> findByNombreContainingIgnoreCaseOrApellidosContainingIgnoreCase(String nombre,String apellido);
 
+	
+	
+	
 }

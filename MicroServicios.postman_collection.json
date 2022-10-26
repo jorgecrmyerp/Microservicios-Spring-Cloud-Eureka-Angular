@@ -404,6 +404,73 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ListaAlumnosGatewaybuscaNombreOApellido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos/nombreoapellido/APELLIDO1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos",
+								"nombreoapellido",
+								"APELLIDO1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListaAlumnosGatewaynombreoapellidoignoramayusculas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos/nombreoapellidoignoramayusculas/APELLIDO/apellido1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos",
+								"nombreoapellidoignoramayusculas",
+								"APELLIDO",
+								"apellido1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscaCursoAlumnoId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/cursos/buscacursoalumnoid/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"cursos",
+								"buscacursoalumnoid",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

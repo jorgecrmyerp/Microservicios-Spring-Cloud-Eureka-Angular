@@ -36,8 +36,8 @@ public class AlumnoServiceImpl extends GenericServiceImpl<Alumno, IAlumnoReposit
 	 * @return the iterable
 	 */
 	@Override
-	public Iterable<Alumno> findByNombreOrApellidosContainingIgnoreCase(String nombre,String apellido) {
-		return repository.findByNombreOrApellidosContainingIgnoreCase(nombre,apellido);
+	public Iterable<Alumno> findByNombreContainingIgnoreCaseOrApellidosContainingIgnoreCase(String nombre,String apellido) {
+		return repository.findByNombreContainingIgnoreCaseOrApellidosContainingIgnoreCase(nombre,apellido);
 	}
 	
 	

@@ -9,4 +9,7 @@ import com.jgr.micro.generic.services.IGenericService;
  */
 public interface ICursoService extends IGenericService<Curso>{
 
+	
+	public Curso findCursoByAlumnoId(Long id);
+	
 }

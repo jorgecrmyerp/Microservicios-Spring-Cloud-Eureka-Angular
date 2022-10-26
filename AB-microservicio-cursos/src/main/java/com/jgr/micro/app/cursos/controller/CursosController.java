@@ -10,6 +10,7 @@ import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +35,7 @@ import brave.Tracer;
 public class CursosController extends GenericController<Curso, ICursoService>{
 	
 	
+	/** The circuit breaker factory. */
 	//circuitbreaker,control de errores
 	@Autowired
 	private CircuitBreakerFactory circuitBreakerFactory;
@@ -41,6 +43,7 @@ public class CursosController extends GenericController<Curso, ICursoService>{
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(CursosController.class);
 	
+	/** The tracer. */
 	@Autowired
 	private Tracer tracer;
 	
@@ -174,5 +177,28 @@ public class CursosController extends GenericController<Curso, ICursoService>{
 		return ResponseEntity.status(HttpStatus.CREATED).body(this.servicio.save(actualiza));
 	}
 
+	
+	/**
+	 * Busca curso alumno id.
+	 *
+	 * @param id the id
+	 * @return the response entity
+	 */
+	@GetMapping("/buscacursoalumnoid/{id}")
+	public ResponseEntity<?> buscaCursoAlumnoId (@PathVariable Long id){
+
+		Curso cur= servicio.findCursoByAlumnoId(id);
+		
+		if(cur!=null) {
+			return ResponseEntity.status(HttpStatus.CREATED).body(cur);
+			
+		}
+		else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		
+	}
+	
+	
 
 }
