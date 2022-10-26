@@ -7,8 +7,8 @@
 		<version>2.7.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.jgr.modelo.datos</groupId>
-	<artifactId>ZZ-microservicio-modelo-datos</artifactId>
+	<groupId>com.jgr.modelo.datos.alumno</groupId>
+	<artifactId>ZZ-microservicio-modelo-datos-alumno</artifactId>
 	<version>V1</version>
 	<name>microservicio-modelo-datos</name>
 	<description>Demo project for Spring Boot</description>

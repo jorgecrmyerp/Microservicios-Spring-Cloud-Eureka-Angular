@@ -133,8 +133,8 @@
 		</dependency>
 		<!--INCLUYO EL MODELO DE DATOS DE ALUMNO-->
 		<dependency>
-			<groupId>com.jgr.modelo.datos</groupId>
-			<artifactId>ZZ-microservicio-modelo-datos</artifactId>
+			<groupId>com.jgr.modelo.datos.alumno</groupId>
+			<artifactId>ZZ-microservicio-modelo-datos-alumno</artifactId>
 			<version>V1</version>
 		</dependency>
 
