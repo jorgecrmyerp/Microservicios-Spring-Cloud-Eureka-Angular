@@ -1,13 +1,39 @@
 package com.jgr.micro.generic.controller;
-
+import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +72,18 @@ public class GenericController<E,S extends IGenericService<E>> {
 	@GetMapping
 	public ResponseEntity<?> listar() {
 		return ResponseEntity.ok().body(servicio.findAll());
+
+	}
+	
+	/**
+	 * Listar.
+	 *
+	 * @return the response entity
+	 */
+	
+	@GetMapping("/pagina")
+	public ResponseEntity<?> listarPaginable(Pageable pageable) {
+		return ResponseEntity.ok().body(servicio.findAll(pageable));
 
 	}
 
@@ -90,7 +128,7 @@ public class GenericController<E,S extends IGenericService<E>> {
 	 *
 	 * @param al the al
 	 * @return the response entity
-	 */
+	 
 	@PostMapping
 	public ResponseEntity<?> creaEntidad(@RequestBody E entity) {
 
@@ -98,6 +136,25 @@ public class GenericController<E,S extends IGenericService<E>> {
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(alDb);
 
+	}
+	*/
+	
+	@PostMapping
+	public ResponseEntity<?> creaEntidad(@Valid @RequestBody E entity, BindingResult result){
+		
+		if(result.hasErrors()) {
+			return this.validar(result);
+		}
+		E entityDb = servicio.save(entity);
+		return ResponseEntity.status(HttpStatus.CREATED).body(entityDb);
+	}
+	
+	protected ResponseEntity<?> validar(BindingResult result){
+		Map<String, Object> errores = new HashMap<>();
+		result.getFieldErrors().forEach(err -> {
+			errores.put(err.getField(), " El campo " + err.getField() + " " + err.getDefaultMessage());
+		});
+		return ResponseEntity.badRequest().body(errores);
 	}
 
 
@@ -121,5 +178,6 @@ public class GenericController<E,S extends IGenericService<E>> {
 		return ResponseEntity.noContent().build();
 
 	}
+
 
 }

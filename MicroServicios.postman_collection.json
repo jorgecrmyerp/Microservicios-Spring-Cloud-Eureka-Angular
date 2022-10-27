@@ -146,6 +146,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ConfigCursos-serverPropertiesdev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/servicio-cursos/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-cursos",
+								"dev"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -187,48 +207,6 @@
 							"path": [
 								"servicio-alumnos",
 								"dev"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ServicioAlumnosConfiguracion",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:55544/api/alumno/obtener-configuracion",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "55544",
-							"path": [
-								"api",
-								"alumno",
-								"obtener-configuracion"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ServicioAlumnosZuulConfiguracion",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8090/api/alumnos/obtener-configuracion",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8090",
-							"path": [
-								"api",
-								"alumnos",
-								"obtener-configuracion"
 							]
 						}
 					},
@@ -889,6 +867,225 @@
 								"api",
 								"cursos",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Examenes",
+			"item": [
+				{
+					"name": "ListaExamenesGateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/examenes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"examenes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListaExamenesZuul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/api/examenes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"examenes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaExamenIDGateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/examenes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"examenes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioExamenesProperties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/servicio-examenes/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-examenes",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServicioExamenesActuator",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/servicio-examenes/actuator",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"servicio-examenes",
+								"actuator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModificaExamenesGateway",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n\r\n        \"nombre\": \"examen de matematicas1\",\r\n\r\n        \"preguntas\": [\r\n            {\r\n                \"id\": 1,\r\n                \"texto\": \"texto examen1\"\r\n            },\r\n            {\r\n                \"id\": 3,\r\n                \"texto\": \"texto examen3\"\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/examenes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"examenes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AltaExamenesGateway",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n\r\n        \"nombre\": \"examen NUEVO\",\r\n\r\n        \"preguntas\": [\r\n            {\r\n                \"id\": 5,\r\n                \"texto\": \"texto examen1\"\r\n            },\r\n            {\r\n                \"id\": 7,\r\n                \"texto\": \"texto examen3\"\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/examenes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"examenes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaNombreExamenGateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/examenes/buscarnomexamen/ingles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"examenes",
+								"buscarnomexamen",
+								"ingles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AsignarExamenesCursos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 3,\r\n        \"nombre\": \"examen de ingles1\",\r\n        \"createAt\": \"2022-10-26T17:47:06.873+02:00\",\r\n        \"preguntas\": [\r\n            {\r\n                \"id\": 3,\r\n                \"texto\": \"texto examen3\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 4,\r\n        \"nombre\": \"examen de ingles2\",\r\n        \"createAt\": \"2022-10-26T17:47:06.873+02:00\",\r\n        \"preguntas\": [\r\n            {\r\n                \"id\": 4,\r\n                \"texto\": \"texto examen4\"\r\n            }\r\n        ]\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/cursos/3/asignar-examenes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"cursos",
+								"3",
+								"asignar-examenes"
 							]
 						}
 					},

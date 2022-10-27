@@ -4,16 +4,17 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.jgr.modelo.microservicio.datos.entity.Alumno;
+import com.jgr.modelo.microservicio.datos.alumno.entity.Alumno;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Interface IAlumnosRepository.
  */
 @Repository
-public interface IAlumnoRepository extends CrudRepository<Alumno, Long>{
+public interface IAlumnoRepository extends PagingAndSortingRepository<Alumno, Long>{
 	
 	
 	/**

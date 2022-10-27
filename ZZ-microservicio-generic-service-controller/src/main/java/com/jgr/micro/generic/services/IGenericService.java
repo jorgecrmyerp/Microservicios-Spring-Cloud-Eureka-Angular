@@ -2,6 +2,9 @@ package com.jgr.micro.generic.services;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Interface IAlumnoService. Usamos genericos para que sirvan para cualquier
@@ -15,6 +18,7 @@ public interface IGenericService<E> {
 	 * @return the iterable
 	 */
 	public Iterable<E> findAll();
+	public Page<E> findAll(Pageable pageable);
 
 	/**
 	 * Find by id.

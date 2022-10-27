@@ -3,7 +3,10 @@ package com.jgr.micro.generic.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -13,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  * como la vamos a HEREDAR no hace falta la notacion @Service,no se inyecta
  */
 //@Service
-public class GenericServiceImpl<E, R extends CrudRepository<E, Long>> implements IGenericService<E> {
+public class GenericServiceImpl<E, R extends PagingAndSortingRepository<E, Long>> implements IGenericService<E> {
 
 	/** The repository.
 	 * Protected para que lo puedan usar las clases que heredan de el
@@ -65,6 +68,12 @@ public class GenericServiceImpl<E, R extends CrudRepository<E, Long>> implements
 
 		repository.deleteById(id);
 
+	}
+
+	@Override
+	public Page<E> findAll(Pageable pageable) {
+
+		return repository.findAll(pageable);
 	}
 
 }

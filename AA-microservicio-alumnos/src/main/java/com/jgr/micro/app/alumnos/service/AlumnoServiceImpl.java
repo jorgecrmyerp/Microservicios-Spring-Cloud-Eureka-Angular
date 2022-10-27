@@ -1,11 +1,13 @@
 package com.jgr.micro.app.alumnos.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jgr.micro.app.alumnos.client.CursoFeignClient;
 import com.jgr.micro.app.alumnos.repository.IAlumnoRepository;
 import com.jgr.micro.generic.services.GenericServiceImpl;
-import com.jgr.modelo.microservicio.datos.entity.Alumno;
+import com.jgr.modelo.microservicio.datos.alumno.entity.Alumno;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -15,6 +17,9 @@ import com.jgr.modelo.microservicio.datos.entity.Alumno;
  */
 @Service
 public class AlumnoServiceImpl extends GenericServiceImpl<Alumno, IAlumnoRepository> implements IAlumnoService{
+
+	@Autowired
+	private CursoFeignClient clientCurso;
 	
 	/**
 	 * Busca nombre or apellido.
@@ -39,6 +44,27 @@ public class AlumnoServiceImpl extends GenericServiceImpl<Alumno, IAlumnoReposit
 	public Iterable<Alumno> findByNombreContainingIgnoreCaseOrApellidosContainingIgnoreCase(String nombre,String apellido) {
 		return repository.findByNombreContainingIgnoreCaseOrApellidosContainingIgnoreCase(nombre,apellido);
 	}
+
+
+	@Override
+	@Transactional(readOnly = true)
+	public Iterable<Alumno> findAllById(Iterable<Long> ids) {
+		return repository.findAllById(ids);
+	}
+	
+	@Override
+	public void eliminarCursoAlumnoPorId(Long id) {
+		clientCurso.eliminarCursoAlumnoPorId(id);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteById(Long id) {
+		super.deleteById(id);
+		this.eliminarCursoAlumnoPorId(id);
+	}
+	
+
 	
 	
 

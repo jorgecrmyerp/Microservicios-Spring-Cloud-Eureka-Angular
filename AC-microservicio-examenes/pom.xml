@@ -96,6 +96,11 @@
 			<artifactId>ZZ-microservicio-generic-service-controller</artifactId>
 			<version>V1</version>
 		</dependency>
+		<dependency>
+		<groupId>com.jgr.modelo.microservicio.datos.examen.entity</groupId>
+	<artifactId>ZZ-microservicio-modelo-datos-examen</artifactId>
+	<version>V1</version>
+	</dependency>
 
 	</dependencies>
 	<dependencyManagement>
