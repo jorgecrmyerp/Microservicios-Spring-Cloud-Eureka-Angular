@@ -20,4 +20,8 @@ zuul:
       service-id: servicio-configuracion  
     examenes:
       path: /api/examenes/**
-      service-id: servicio-examenes    
+      service-id: servicio-examenes 
+    respuestas:
+      path: /api/respuestas/**
+      service-id: servicio-respuestas    
+    

@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-27 MICROSERVICIO RESPUESTAS SIN CONFIGURAR"
+message="$(date)2022-10-27 MICROSERVICIO RESPUESTAS GATEWAY CONFIG"
 fi
 
 start=`date +%s`
