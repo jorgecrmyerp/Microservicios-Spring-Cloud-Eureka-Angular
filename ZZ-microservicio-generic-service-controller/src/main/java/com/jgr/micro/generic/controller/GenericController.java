@@ -1,24 +1,4 @@
 package com.jgr.micro.generic.controller;
-import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-
-import javax.validation.Valid;
-
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,23 +24,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jgr.micro.generic.error.ErrorBBDDException;
 import com.jgr.micro.generic.error.IdNoEncontradoException;
 import com.jgr.micro.generic.services.IGenericService;
+
 /**
- * The ClassGenericController.
- * Generico para poder usarlo heredando en el destino
- * a esta clase le pasaremos la Entidad E y el Serivicio S
- * a su vez el servicio S como parametros necesita una Entidad, le pasamos E
+ * The ClassGenericController. Generico para poder usarlo heredando en el
+ * destino a esta clase le pasaremos la Entidad E y el Serivicio S a su vez el
+ * servicio S como parametros necesita una Entidad, le pasamos E
  * 
  */
 @RestController
-public class GenericController<E,S extends IGenericService<E>> {
+public class GenericController<E, S extends IGenericService<E>> {
 
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(GenericController.class);
 
-	/** El servicio S es el que le entra como parametro
-	 * lo pongo como protected para que pueda usarse en el que hereda de el
-	 * */
-	
+	/**
+	 * El servicio S es el que le entra como parametro lo pongo como protected para
+	 * que pueda usarse en el que hereda de el
+	 */
+
 	@Autowired
 	protected S servicio;
 
@@ -74,13 +55,13 @@ public class GenericController<E,S extends IGenericService<E>> {
 		return ResponseEntity.ok().body(servicio.findAll());
 
 	}
-	
+
 	/**
 	 * Listar.
 	 *
 	 * @return the response entity
 	 */
-	
+
 	@GetMapping("/pagina")
 	public ResponseEntity<?> listarPaginable(Pageable pageable) {
 		return ResponseEntity.ok().body(servicio.findAll(pageable));
@@ -128,35 +109,33 @@ public class GenericController<E,S extends IGenericService<E>> {
 	 *
 	 * @param al the al
 	 * @return the response entity
-	 
+	 * 
+	 * @PostMapping public ResponseEntity<?> creaEntidad(@RequestBody E entity) {
+	 * 
+	 *              E alDb = servicio.save(entity);
+	 * 
+	 *              return ResponseEntity.status(HttpStatus.CREATED).body(alDb);
+	 * 
+	 *              }
+	 */
+
 	@PostMapping
-	public ResponseEntity<?> creaEntidad(@RequestBody E entity) {
+	public ResponseEntity<?> creaEntidad(@Valid @RequestBody E entity, BindingResult result) {
 
-		E alDb = servicio.save(entity);
-
-		return ResponseEntity.status(HttpStatus.CREATED).body(alDb);
-
-	}
-	*/
-	
-	@PostMapping
-	public ResponseEntity<?> creaEntidad(@Valid @RequestBody E entity, BindingResult result){
-		
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return this.validar(result);
 		}
 		E entityDb = servicio.save(entity);
 		return ResponseEntity.status(HttpStatus.CREATED).body(entityDb);
 	}
-	
-	protected ResponseEntity<?> validar(BindingResult result){
+
+	protected ResponseEntity<?> validar(BindingResult result) {
 		Map<String, Object> errores = new HashMap<>();
 		result.getFieldErrors().forEach(err -> {
 			errores.put(err.getField(), " El campo " + err.getField() + " " + err.getDefaultMessage());
 		});
 		return ResponseEntity.badRequest().body(errores);
 	}
-
 
 	/**
 	 * Borra E.
@@ -178,6 +157,5 @@ public class GenericController<E,S extends IGenericService<E>> {
 		return ResponseEntity.noContent().build();
 
 	}
-
 
 }

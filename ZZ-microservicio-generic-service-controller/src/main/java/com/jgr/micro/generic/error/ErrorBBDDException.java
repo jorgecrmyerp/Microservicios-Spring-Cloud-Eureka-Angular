@@ -1,6 +1,5 @@
 package com.jgr.micro.generic.error;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ErrorBBDDException.
  */
