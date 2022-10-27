@@ -16,7 +16,7 @@ public interface ICursoRepository extends PagingAndSortingRepository<Curso, Long
 	
 	//con el join fetch se trae de una vez todos los alumnos 
 	
-	@Query ("select cur from Curso cur join fetch cur.alumnos al  where al.id=?1")	
+	@Query("select c from Curso c join fetch c.cursoAlumnos a where a.alumnoId=?1")	
 	public Curso findCursoByAlumnoId(Long id);
 	
 	

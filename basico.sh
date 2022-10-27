@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-27 REFRESCO ENTORNO,ERROR RARO"
+message="$(date)2022-10-27 ++PROPIEDAD EN CURSOS PARA QUE LA SAQUE REFRESCO ENTORNO,ERROR RARO"
 fi
 
 git add .

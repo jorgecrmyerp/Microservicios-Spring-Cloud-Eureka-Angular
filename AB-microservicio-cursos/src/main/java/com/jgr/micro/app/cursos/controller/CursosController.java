@@ -60,7 +60,7 @@ import brave.Tracer;
  * The Class CursosController. Extiende del controlador generico
  * GenericController, como parametros le pasamos la clase curso y la capa de
  * servicio ICursoService,que a su vez hereda de IGenericService Como en
- * genericcontroller declaramos protected la capa de servicio llamada service
+ * genericcontroller declaramos protected la capa de servicio llamada servicio
  */
 @RestController
 public class CursosController extends GenericController<Curso, ICursoService> {
@@ -76,7 +76,6 @@ public class CursosController extends GenericController<Curso, ICursoService> {
 	/** The tracer. */
 	@Autowired
 	private Tracer tracer;
-
 
 	@Value("${config.balanceador.test}")
 	private String balanceadorTest;
@@ -119,7 +118,7 @@ public class CursosController extends GenericController<Curso, ICursoService> {
 	
 	@GetMapping("/{id}")
 	@Override
-	public ResponseEntity<?>  buscaPorId(@PathVariable Long id){
+	public ResponseEntity<?> buscaPorId(@PathVariable Long id){
 		Optional<Curso> o = servicio.findById(id);
 		if(o.isEmpty()) {
 			return ResponseEntity.notFound().build();
