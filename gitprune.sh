@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-27 PTE PROBAR RESPUESTAS"
+message="$(date)2022-10-27 QUITADO ESPACIO EN EL PROPERTIES ANTES DEL USESSL"
 fi
 
 start=`date +%s`

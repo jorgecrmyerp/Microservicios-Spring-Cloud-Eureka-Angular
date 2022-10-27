@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.jgr.micro.app.respuestas.models.entity.Respuesta;
 import com.jgr.micro.app.respuestas.services.IRespuestaService;
 
@@ -30,7 +31,6 @@ public class RespuestaController {
 	/** The service. */
 	@Autowired
 	private IRespuestaService service;
-	
 	
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(RespuestaController.class);
