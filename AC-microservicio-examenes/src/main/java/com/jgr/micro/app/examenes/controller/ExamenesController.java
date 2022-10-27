@@ -29,7 +29,7 @@ import brave.Tracer;
  * The Class ExamenesController.
  */
 @RestController
-public class ExamenesController extends GenericController<com.jgr.modelo.microservicio.datos.examen.entity.Examen, IExamenService> {
+public class ExamenesController extends GenericController<Examen, IExamenService> {
 
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(ExamenesController.class);
@@ -88,16 +88,6 @@ public class ExamenesController extends GenericController<com.jgr.modelo.microse
 		return ResponseEntity.ok(servicio.findExamByNombre(nomexamen));
 	}
 	
-	@GetMapping("/asignaturas")	
-	public ResponseEntity<?>listarAsignaturas(){
-		
-		return ResponseEntity.ok(servicio.findAllAsignaturas());
-	}
 	
-	@GetMapping("/asignaturas/{nomasignatura}")	
-	public ResponseEntity<?> buscarAsignaturasPorNombre(@PathVariable String nomasignatura){
-		
-		return ResponseEntity.ok(servicio.findAsignaturaByNombreContainingIgnoreCase(nomasignatura));
-	}
 
 }

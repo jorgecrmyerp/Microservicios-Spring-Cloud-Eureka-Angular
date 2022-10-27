@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-27 QUITADO ESPACIO EN EL PROPERTIES ANTES DEL USESSL"
+message="$(date)2022-10-27 CREADO CONTROLADOR ASIGNATURA"
 fi
 
 start=`date +%s`

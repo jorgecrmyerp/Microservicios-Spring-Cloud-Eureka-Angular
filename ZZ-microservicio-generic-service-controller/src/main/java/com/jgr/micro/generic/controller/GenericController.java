@@ -109,17 +109,19 @@ public class GenericController<E, S extends IGenericService<E>> {
 	 *
 	 * @param al the al
 	 * @return the response entity
-	 * 
-	 * @PostMapping public ResponseEntity<?> creaEntidad(@RequestBody E entity) {
-	 * 
-	 *              E alDb = servicio.save(entity);
-	 * 
-	 *              return ResponseEntity.status(HttpStatus.CREATED).body(alDb);
-	 * 
-	 *              }
 	 */
 
 	@PostMapping
+	public ResponseEntity<?> creaEntidad(@RequestBody E entity) {
+
+		E alDb = servicio.save(entity);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(alDb);
+
+	}
+
+	@PostMapping("/entidad")
+
 	public ResponseEntity<?> creaEntidad(@Valid @RequestBody E entity, BindingResult result) {
 
 		if (result.hasErrors()) {
