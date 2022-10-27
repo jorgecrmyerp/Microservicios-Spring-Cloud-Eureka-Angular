@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.jgr.modelo.microservicio.datos.alumno.entity.Alumno;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface IAlumnosRepository.
  */

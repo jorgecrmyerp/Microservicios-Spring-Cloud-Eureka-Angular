@@ -10,7 +10,6 @@ import com.jgr.modelo.microservicio.datos.alumno.entity.Alumno;
  */
 public interface ICursoService extends IGenericService<Curso>{
 
-	
 	public Curso findCursoByAlumnoId(Long id);
 	
 	public Iterable<Long> obtenerExamenesIdsConRespuestasAlumno(Long alumnoId);
