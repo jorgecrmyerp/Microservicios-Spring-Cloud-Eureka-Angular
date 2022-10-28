@@ -46,7 +46,7 @@ public class AsignaturaController extends GenericController<Asignatura, IAsignat
 	*/
 
 	
-	@GetMapping("/{nomasignatura}")	
+	@GetMapping("/buscapornombre/{nomasignatura}")	
 	public ResponseEntity<?> buscarAsignaturasPorNombre(@PathVariable String nomasignatura){
 		
 		return ResponseEntity.ok(servicio.findAsignaturaByNombreContainingIgnoreCase(nomasignatura));

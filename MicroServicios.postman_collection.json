@@ -571,6 +571,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "EditarAlumnoConFoto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \r\n        \"nombre\": \"nombreconfoto\",\r\n        \"apellidos\": \"apellidosconfoto\",\r\n        \"email\": \"emailconfoto@mail.com\",\r\n        \"createAt\": \"2022-10-28T08:15:35.000+00:00\",\r\n        \"fotoHashCode\": 1792110702\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos/validar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos",
+								"validar",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1131,7 +1162,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8091/api/cursos/buscacursoalumnoid/1",
+							"raw": "http://localhost:8091/api/cursos/alumno/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1140,8 +1171,37 @@
 							"path": [
 								"api",
 								"cursos",
-								"buscacursoalumnoid",
+								"alumno",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AltaCursos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"curso1\",    \r\n    \"cursoAlumnos\": [{}],\r\n    \"alumnos\": [{}],\r\n    \"examenes\": [{}]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/cursos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"cursos"
 							]
 						}
 					},
@@ -1290,7 +1350,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n    {\r\n\r\n        \"nombre\": \"examen NUEVO\",\r\n\r\n        \"preguntas\": [\r\n            {\r\n                \"id\": 5,\r\n                \"texto\": \"texto examen1\"\r\n            },\r\n            {\r\n                \"id\": 7,\r\n                \"texto\": \"texto examen3\"\r\n            }\r\n        ]\r\n    }",
+							"raw": "\r\n    {\r\n\r\n        \"nombre\": \"examen NUEVO\",\r\n\r\n        \"preguntas\": [\r\n            {\r\n                \"id\": 1,\r\n                \"texto\": \"texto examen1\"\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"texto\": \"texto examen2\"\r\n            }\r\n        ],\r\n        \"asignatura\":{\r\n            \"id\":1\r\n        }\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1350,7 +1410,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8091/api/cursos/3/asignar-examenes",
+							"raw": "http://localhost:8091/api/cursos/1/asignar-examenes",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1359,7 +1419,7 @@
 							"path": [
 								"api",
 								"cursos",
-								"3",
+								"1",
 								"asignar-examenes"
 							]
 						}
@@ -1370,7 +1430,198 @@
 		},
 		{
 			"name": "Respuestas",
-			"item": []
+			"item": [
+				{
+					"name": "ListaRespuestas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/respuestas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"respuestas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RespuestasAlumnoExamen",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/respuestas/alumno/1/examen/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"respuestas",
+								"alumno",
+								"1",
+								"examen",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AsignarRespuestasAlumno",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"texto\": \"\",\r\n        \"alumno\": {\r\n            \"id\": 1,\r\n            \"nombre\": null,\r\n            \"apellidos\": null,\r\n            \"email\": null,\r\n            \"createAt\": null,\r\n            \"fotoHashCode\": null\r\n        },\r\n        \"pregunta\": {\r\n            \"id\": 1,\r\n            \"texto\": \"Respuesta Pregunta1\"\r\n        }\r\n    },\r\n    {\r\n        \"texto\": \"\",\r\n        \"alumno\": {\r\n            \"id\": 1,\r\n            \"nombre\": null,\r\n            \"apellidos\": null,\r\n            \"email\": null,\r\n            \"createAt\": null,\r\n            \"fotoHashCode\": null\r\n        },\r\n        \"pregunta\": {\r\n            \"id\": 21,\r\n            \"texto\": \"Respuesta Pregunta21\"\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/respuestas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"respuestas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExamenesRespondidosAlumno",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/respuestas/alumno/1/examenes-respondidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"respuestas",
+								"alumno",
+								"1",
+								"examenes-respondidos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Asignaturas",
+			"item": [
+				{
+					"name": "AltaAsignaturas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/examenes/asignaturas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"examenes",
+								"asignaturas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListaAsignaturas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/examenes/asignaturas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"examenes",
+								"asignaturas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaAsignaturaId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/examenes/asignaturas/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"examenes",
+								"asignaturas",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaAsignaturaPorNombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/examenes/asignaturas/buscapornombre/matematicas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"examenes",
+								"asignaturas",
+								"buscapornombre",
+								"matematicas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "SWAGGER",

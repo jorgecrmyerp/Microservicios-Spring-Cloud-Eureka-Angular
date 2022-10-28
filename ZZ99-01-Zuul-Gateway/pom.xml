@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jgr.micro.app.micro.zuul.gateway</groupId>
-	<artifactId>01-Zuul-Gateway</artifactId>
+	<artifactId>ZZ99-01-Zuul-Gateway</artifactId>
 	<version>V1</version>
 	<name>01-Zuul-Gateway</name>
 	<description>Zuul Gateway</description>

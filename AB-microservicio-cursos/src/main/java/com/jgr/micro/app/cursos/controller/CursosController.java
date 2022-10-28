@@ -7,27 +7,6 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +28,6 @@ import com.jgr.micro.app.cursos.models.data.Curso;
 import com.jgr.micro.app.cursos.models.data.CursoAlumno;
 import com.jgr.micro.app.cursos.services.ICursoService;
 import com.jgr.micro.generic.controller.GenericController;
-import com.jgr.micro.generic.error.IdNoEncontradoException;
 import com.jgr.modelo.microservicio.datos.alumno.entity.Alumno;
 import com.jgr.modelo.microservicio.datos.examen.entity.Examen;
 

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jgr.modelo.microservicio.datos.alumno.entity.Alumno;
 
-@FeignClient(name = "microservicio-usuarios")
+@FeignClient(name = "servicio-alumnos")
 public interface AlumnoFeignClient {
 
 	@GetMapping("/alumnos-por-curso")
