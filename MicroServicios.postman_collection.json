@@ -268,12 +268,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8090/api/alumnos",
+							"raw": "http://localhost:8091/api/alumnos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8091",
 							"path": [
 								"api",
 								"alumnos"
@@ -429,12 +429,37 @@
 					"response": []
 				},
 				{
-					"name": "buscaCursoAlumnoId",
+					"name": "CrearAlumnoConFoto",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/D:/Microservicios/Microservicios Spring Cloud Eureka & Angular & Mockito/anonimus.jpg"
+								},
+								{
+									"key": "nombre",
+									"value": "nombreconfoto",
+									"type": "text"
+								},
+								{
+									"key": "apellidos",
+									"value": "apellidosconfoto",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "emailconfoto@mail.com",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "http://localhost:8091/api/cursos/buscacursoalumnoid/1",
+							"raw": "http://localhost:8091/api/alumnos/crear-con-foto",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -442,8 +467,105 @@
 							"port": "8091",
 							"path": [
 								"api",
-								"cursos",
-								"buscacursoalumnoid",
+								"alumnos",
+								"crear-con-foto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditarAlumnoConFoto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/D:/Microservicios/Microservicios Spring Cloud Eureka & Angular & Mockito/anonimus.jpg"
+								},
+								{
+									"key": "nombre",
+									"value": "nombreconfoto",
+									"type": "text"
+								},
+								{
+									"key": "apellidos",
+									"value": "apellidosconfoto",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "emailconfoto@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos/editar-con-foto/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos",
+								"editar-con-foto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerAlumnoConFoto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/D:/Microservicios/Microservicios Spring Cloud Eureka & Angular & Mockito/anonimus.jpg"
+								},
+								{
+									"key": "nombre",
+									"value": "nombreconfoto",
+									"type": "text"
+								},
+								{
+									"key": "apellidos",
+									"value": "apellidosconfoto",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "emailconfoto@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos/uploads/img/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos",
+								"uploads",
+								"img",
 								"1"
 							]
 						}
@@ -757,7 +879,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"id\": 6,\r\n        \"nombre\": \"ALUMNO6\",\r\n        \"apellidos\": \"APELLIDO6\",\r\n        \"email\": \"email6@asdf.com\",\r\n        \"createAt\": \"2022-10-24T08:14:24.787+02:00\"\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"nombre\": \"ALUMNO6\",\r\n        \"apellidos\": \"APELLIDO6\",\r\n        \"email\": \"email6@asdf.com\",\r\n        \"createAt\": \"2022-10-24T08:14:24.787+02:00\"\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -765,12 +887,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8090/api/cursos/3/asignar-alumnos",
+							"raw": "http://localhost:8091/api/cursos/3/asignar-alumnos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8091",
 							"path": [
 								"api",
 								"cursos",
@@ -796,12 +918,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8090/api/cursos/3/eliminar-alumno",
+							"raw": "http://localhost:8091/api/cursos/3/eliminar-alumno",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8091",
 							"path": [
 								"api",
 								"cursos",
@@ -867,6 +989,159 @@
 								"api",
 								"cursos",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AsignarAlummnoCursoGateway",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"id\": 6,\r\n        \"nombre\": \"ALUMNO6\",\r\n        \"apellidos\": \"APELLIDO6\",\r\n        \"email\": \"email6@asdf.com\",\r\n        \"createAt\": \"2022-10-24T08:14:24.787+02:00\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/cursos/3/asignar-alumno",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"cursos",
+								"3",
+								"asignar-alumno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListaAlumnosGatewayPaginable",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos/pagina?page=0&size=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos",
+								"pagina"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostInsertAlumnosCONFOTOGateway",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/D:/Microservicios/Microservicios Spring Cloud Eureka & Angular & Mockito/anonimus.jpg"
+								},
+								{
+									"key": "nombre",
+									"value": "nombrefoto",
+									"type": "text"
+								},
+								{
+									"key": "apellidos",
+									"value": "apellidosfoto",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos/crear-con-foto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos",
+								"crear-con-foto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListaAlumnosGatewayCONFOTO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/alumnos/uploads/img/88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"alumnos",
+								"uploads",
+								"img",
+								"88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscaCursoAlumnoId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/cursos/buscacursoalumnoid/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"cursos",
+								"buscacursoalumnoid",
+								"1"
 							]
 						}
 					},
@@ -1092,6 +1367,10 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Respuestas",
+			"item": []
 		},
 		{
 			"name": "SWAGGER",

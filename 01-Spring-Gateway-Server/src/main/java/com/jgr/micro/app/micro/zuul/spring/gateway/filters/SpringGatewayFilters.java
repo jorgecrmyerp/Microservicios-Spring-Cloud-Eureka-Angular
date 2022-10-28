@@ -37,7 +37,9 @@ public class SpringGatewayFilters implements GlobalFilter,Ordered{
 		return chain.filter(exchange).then(Mono.fromRunnable(()->{
 			exchange.getResponse().getCookies().add("color", ResponseCookie.from("color", "rojo").build());
 			//exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
-			exchange.getResponse().getHeaders().setContentType(MediaType.APPLICATION_JSON);
+			
+			//si dejamos esto,solo saca json,pero por ejemplo no sacaria fotos
+			//exchange.getResponse().getHeaders().setContentType(MediaType.APPLICATION_JSON);
 			
 			
 		}));

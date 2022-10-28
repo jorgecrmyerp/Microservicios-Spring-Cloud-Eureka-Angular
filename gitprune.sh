@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-27 CENTRALIZADO TODO EN EL servicio-configuracion-prod.properties"
+message="$(date)2022-10-27 CENTRALIZADO ACCESO BBDD EN APPLICATION.PROPERTIES Y SE VE LA FOTO"
 fi
 
 start=`date +%s`
