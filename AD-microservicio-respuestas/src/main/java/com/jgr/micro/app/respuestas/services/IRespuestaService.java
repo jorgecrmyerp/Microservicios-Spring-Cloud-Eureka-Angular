@@ -2,6 +2,7 @@ package com.jgr.micro.app.respuestas.services;
 
 import com.jgr.micro.app.respuestas.models.entity.Respuesta;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface IRespuestaService.
  */
@@ -31,4 +32,13 @@ public interface IRespuestaService {
 	 * @return the iterable
 	 */
 	public Iterable<Long> findExamenesIdsConRespuestasByAlumno(Long alumnoId);
+	
+	
+	/**
+	 * Find all.
+	 *
+	 * @return the iterable
+	 */
+	public Iterable<Respuesta> findAll();
+	
 }

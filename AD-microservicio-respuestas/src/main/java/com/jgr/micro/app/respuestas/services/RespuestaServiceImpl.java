@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jgr.micro.app.respuestas.models.entity.Respuesta;
 import com.jgr.micro.app.respuestas.models.repository.IRespuestaRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class RespuestaServiceImpl.
  */
@@ -51,6 +52,17 @@ public class RespuestaServiceImpl implements IRespuestaService {
 	@Transactional(readOnly = true)
 	public Iterable<Long> findExamenesIdsConRespuestasByAlumno(Long alumnoId) {
 		return repository.findExamenesIdsConRespuestasByAlumno(alumnoId);
+	}
+
+	/**
+	 * Find all.
+	 *
+	 * @return the iterable
+	 */
+	@Override
+	public Iterable<Respuesta> findAll() {
+		
+		return repository.findAll();
 	}
 
 }

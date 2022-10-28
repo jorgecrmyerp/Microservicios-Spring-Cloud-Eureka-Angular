@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jgr.modelo.microservicio.datos.alumno.entity.Alumno;
 import com.jgr.modelo.microservicio.datos.examen.entity.Pregunta;
 
@@ -28,8 +29,8 @@ public class Respuesta {
 	
 	@Column(name="alumno_id")
 	private Long alumnoId;
-	
 	@OneToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties(value= {"handler", "hibernateLazyInitializer"})//para que no de error al listar
 	private Pregunta pregunta;
 
 	public Long getId() {

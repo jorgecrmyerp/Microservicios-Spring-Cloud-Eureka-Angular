@@ -86,5 +86,12 @@ public class RespuestaController {
 		Iterable<Long> examenesIds = service.findExamenesIdsConRespuestasByAlumno(alumnoId);
 		return ResponseEntity.ok(examenesIds);
 	}
+	
+	
+	@GetMapping()
+	public ResponseEntity<?> listaRespuestas(){
+		return ResponseEntity.ok().body(service.findAll());
+		
+	}
 
 }

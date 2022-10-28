@@ -25,11 +25,14 @@ import com.jgr.micro.generic.error.ErrorBBDDException;
 import com.jgr.micro.generic.error.IdNoEncontradoException;
 import com.jgr.micro.generic.services.IGenericService;
 
+// TODO: Auto-generated Javadoc
 /**
  * The ClassGenericController. Generico para poder usarlo heredando en el
  * destino a esta clase le pasaremos la Entidad E y el Serivicio S a su vez el
  * servicio S como parametros necesita una Entidad, le pasamos E
- * 
+ *
+ * @param <E> the element type
+ * @param <S> the generic type
  */
 @RestController
 public class GenericController<E, S extends IGenericService<E>> {
@@ -37,10 +40,7 @@ public class GenericController<E, S extends IGenericService<E>> {
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(GenericController.class);
 
-	/**
-	 * El servicio S es el que le entra como parametro lo pongo como protected para
-	 * que pueda usarse en el que hereda de el
-	 */
+	/** El servicio S es el que le entra como parametro lo pongo como protected para que pueda usarse en el que hereda de el. */
 
 	@Autowired
 	protected S servicio;
@@ -59,6 +59,7 @@ public class GenericController<E, S extends IGenericService<E>> {
 	/**
 	 * Listar.
 	 *
+	 * @param pageable the pageable
 	 * @return the response entity
 	 */
 
@@ -107,7 +108,7 @@ public class GenericController<E, S extends IGenericService<E>> {
 	/**
 	 * Crea E.
 	 *
-	 * @param al the al
+	 * @param entity the entity
 	 * @return the response entity
 	 */
 
@@ -120,6 +121,13 @@ public class GenericController<E, S extends IGenericService<E>> {
 
 	}
 
+	/**
+	 * Crea entidad.
+	 *
+	 * @param entity the entity
+	 * @param result the result
+	 * @return the response entity
+	 */
 	@PostMapping("/entidad")
 
 	public ResponseEntity<?> creaEntidad(@Valid @RequestBody E entity, BindingResult result) {
@@ -131,6 +139,12 @@ public class GenericController<E, S extends IGenericService<E>> {
 		return ResponseEntity.status(HttpStatus.CREATED).body(entityDb);
 	}
 
+	/**
+	 * Validar.
+	 *
+	 * @param result the result
+	 * @return the response entity
+	 */
 	protected ResponseEntity<?> validar(BindingResult result) {
 		Map<String, Object> errores = new HashMap<>();
 		result.getFieldErrors().forEach(err -> {

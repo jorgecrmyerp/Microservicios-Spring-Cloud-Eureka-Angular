@@ -1185,7 +1185,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"curso1\",    \r\n    \"cursoAlumnos\": [{}],\r\n    \"alumnos\": [{}],\r\n    \"examenes\": [{}]\r\n  }\r\n}",
+							"raw": " {\r\n        \r\n        \"nombre\": \"Cursoxxx\",\r\n        \r\n        \"cursoAlumnos\": [\r\n            {\r\n               \r\n                \"alumnoId\": 9\r\n            }\r\n        ],\r\n        \"alumnos\": [\r\n            {\r\n                \"id\": 9,\r\n                \"nombre\": \"nombreconfoto\",\r\n                \"apellidos\": \"apellidosconfoto\",\r\n                \"email\": \"emailconfoto@mail.com\",\r\n                \"createAt\": \"2022-10-28T10:15:35.000+02:00\",\r\n                \"fotoHashCode\": null\r\n            }\r\n        ],\r\n        \"examenes\": []\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1350,7 +1350,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n    {\r\n\r\n        \"nombre\": \"examen NUEVO\",\r\n\r\n        \"preguntas\": [\r\n            {\r\n                \"id\": 1,\r\n                \"texto\": \"texto examen1\"\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"texto\": \"texto examen2\"\r\n            }\r\n        ],\r\n        \"asignatura\":{\r\n            \"id\":1\r\n        }\r\n    }",
+							"raw": " {\r\n        \"id\": 1,\r\n        \"nombre\": \"Examen1\",\r\n        \"createAt\": \"2022-08-03T10:58:33.000+02:00\",\r\n        \"preguntas\": [\r\n            {\r\n                \"id\": 1,\r\n                \"texto\": \"Pregunta1 EXAMEN1\"\r\n            }\r\n        ],\r\n        \"asignatura\": {\r\n            \"id\": 1,\r\n            \"nombre\": \"Matemáticas\",\r\n            \"padre\": null,\r\n            \"hijos\": [\r\n                {\r\n                    \"id\": 8,\r\n                    \"nombre\": \"Algebra\",\r\n                    \"hijos\": []\r\n                },\r\n                {\r\n                    \"id\": 9,\r\n                    \"nombre\": \"Aritmética\",\r\n                    \"hijos\": []\r\n                },\r\n                {\r\n                    \"id\": 10,\r\n                    \"nombre\": \"Trigonometría\",\r\n                    \"hijos\": []\r\n                }\r\n            ]\r\n        },\r\n        \"respondido\": false\r\n    },",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1507,6 +1507,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Respuestas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/respuestas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"respuestas"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1518,6 +1538,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \r\n        \"nombre\": \"Matemáticas\",\r\n        \"padre\": null,\r\n        \"hijos\": [\r\n            {\r\n                \"id\": 8,\r\n                \"nombre\": \"Algebra\",\r\n                \"hijos\": []\r\n            },\r\n            {\r\n                \"id\": 9,\r\n                \"nombre\": \"Aritmética\",\r\n                \"hijos\": []\r\n            },\r\n            {\r\n                \"id\": 10,\r\n                \"nombre\": \"Trigonometría\",\r\n                \"hijos\": []\r\n            }\r\n        ]\r\n}    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8091/api/examenes/asignaturas",
 							"protocol": "http",
