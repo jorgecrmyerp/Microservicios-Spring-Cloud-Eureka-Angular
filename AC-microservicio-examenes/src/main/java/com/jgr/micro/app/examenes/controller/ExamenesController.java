@@ -1,7 +1,5 @@
 package com.jgr.micro.app.examenes.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -16,10 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.jgr.modelo.microservicio.datos.examen.entity.Examen;
 import com.jgr.micro.app.examenes.entity.service.IExamenService;
 import com.jgr.micro.generic.controller.GenericController;
+import com.jgr.modelo.microservicio.datos.examen.entity.Examen;
 
 import brave.Tracer;
 

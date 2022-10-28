@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-28 BBDD EN CLOUD PROBANDO RELACIONES MICROSERVICIOS"
+message="$(date)2022-10-28 Detalle de los alumnos en los cursos"
 fi
 
 start=`date +%s`

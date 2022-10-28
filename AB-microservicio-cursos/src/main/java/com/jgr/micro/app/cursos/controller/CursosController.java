@@ -67,21 +67,31 @@ public class CursosController extends GenericController<Curso, ICursoService> {
 	@GetMapping
 	@Override
 	public ResponseEntity<?> listar(){
-		List<Curso> cursos = ((List<Curso>) servicio.findAll()).stream().map(c ->{
-			c.getCursoAlumnos().forEach(ca ->{
+		
+		
+		
+		List<Curso> cursos = ((List<Curso>) servicio.findAll()).stream().map(curso ->{
+			
+			curso.getCursoAlumnos().forEach(cursoalumno ->{
 				Alumno alumno  = new Alumno();
-				alumno.setId(ca.getAlumnoId());
-				c.addAlumno(alumno);
+				
+				//cliente feign
+				alumno=(servicio.obtenerDatosAlumno(cursoalumno.getAlumnoId())!=null)?servicio.obtenerDatosAlumno(cursoalumno.getAlumnoId()):null;
+				
+				curso.addAlumno(alumno);
+				
 			});
-			return c;
+			
+			return curso;
 		}).collect(Collectors.toList());
 		
 		return ResponseEntity.ok().body(cursos);
-	}
+	};
 	
 	@GetMapping("/pagina")
 	@Override
 	public ResponseEntity<?> listarPaginable(Pageable pageable){
+		
 		Page<Curso> cursos = servicio.findAll(pageable).map(curso ->{
 			curso.getCursoAlumnos().forEach(ca ->{
 				Alumno alumno  = new Alumno();
@@ -97,7 +107,11 @@ public class CursosController extends GenericController<Curso, ICursoService> {
 	@GetMapping("/{id}")
 	@Override
 	public ResponseEntity<?> buscaPorId(@PathVariable Long id){
+		
+		
 		Optional<Curso> o = servicio.findById(id);
+		
+		
 		if(o.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
@@ -107,6 +121,7 @@ public class CursosController extends GenericController<Curso, ICursoService> {
 			
 			List<Long> ids = curso.getCursoAlumnos().stream().map(ca -> ca.getAlumnoId())
 					.collect(Collectors.toList());
+			//este esta en alumnofeignclient
 			
 			List<Alumno> alumnos = (List<Alumno>) servicio.obtenerAlumnosPorCurso(ids);
 			
@@ -143,15 +158,16 @@ public class CursosController extends GenericController<Curso, ICursoService> {
 	
 	@PutMapping("/{id}/asignar-alumnos")
 	public ResponseEntity<?> asignarAlumnos(@RequestBody List<Alumno> alumnos, @PathVariable Long id){
+		
 	    Optional<Curso> o = this.servicio.findById(id);
 	    if(!o.isPresent()) {
 	    	return ResponseEntity.notFound().build();
 	    }
 	    Curso dbCurso = o.get();
 	    
-	    alumnos.forEach(a -> {
+	    alumnos.forEach(alumno -> {
 	    	CursoAlumno cursoAlumno = new CursoAlumno();
-	    	cursoAlumno.setAlumnoId(a.getId());
+	    	cursoAlumno.setAlumnoId(alumno.getId());
 	    	cursoAlumno.setCurso(dbCurso);
 	    	dbCurso.addCursoAlumno(cursoAlumno);
 	    });

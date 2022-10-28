@@ -39,8 +39,6 @@ import brave.Tracer;
 @RestController
 //si se modifica el environment o algo en git
 @RefreshScope
-
-//@RequestMapping("/api/alumnos")
 public class AlumnoController extends GenericController<Alumno, IAlumnoService> {
 
 	/** The logger. */
@@ -60,12 +58,29 @@ public class AlumnoController extends GenericController<Alumno, IAlumnoService> 
 	// este ya tiene definida la variable service que conecta con la capa de
 	// servicio
 	// private IAlumnoService iAlumnoService;
-	
-	
 
+	/**
+	 * Obtener alumnos por curso.
+	 *
+	 * @param ids the ids
+	 * @return the response entity
+	 */
 	@GetMapping("/alumnos-por-curso")
-	public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam List<Long> ids){
+	public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam List<Long> ids) {
 		return ResponseEntity.ok(servicio.findAllById(ids));
+	}
+	
+	
+	/**
+	 * Obtener datos alumno,para cursos,obtengo el detalle del alumno
+	 *
+	 * @param id the id
+	 * @return the response entity
+	 */
+	//
+	@GetMapping("/datos-alumno/{id}")
+	public Alumno obtenerDatosAlumno(@RequestParam Long id) {
+		return servicio.findById(id).orElse(null);
 	}
 
 	/**
@@ -94,33 +109,34 @@ public class AlumnoController extends GenericController<Alumno, IAlumnoService> 
 		return ResponseEntity.ok().body(servicio.save(alDb));
 
 	}
-	
+
 	/**
 	 * Editar foto.
 	 *
 	 * @param alumno the alumno
 	 * @param result the result
-	 * @param id the id
+	 * @param id     the id
 	 * @return the response entity
 	 */
 	@PutMapping("/validar/{id}")
-	public ResponseEntity<?> editarFoto(@Valid @RequestBody Alumno alumno, BindingResult result, @PathVariable Long id){
-		
-		if(result.hasErrors()) {
+	public ResponseEntity<?> editarFoto(@Valid @RequestBody Alumno alumno, BindingResult result,
+			@PathVariable Long id) {
+
+		if (result.hasErrors()) {
 			return this.validar(result);
 		}
-		
+
 		Optional<Alumno> o = servicio.findById(id);
-		
-		if(o.isEmpty()) {
+
+		if (o.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
-		
+
 		Alumno alumnoDb = o.get();
 		alumnoDb.setNombre(alumno.getNombre());
 		alumnoDb.setApellidos(alumno.getApellidos());
 		alumnoDb.setEmail(alumno.getEmail());
-		
+
 		return ResponseEntity.status(HttpStatus.CREATED).body(servicio.save(alumnoDb));
 	}
 
@@ -140,7 +156,7 @@ public class AlumnoController extends GenericController<Alumno, IAlumnoService> 
 	/**
 	 * Find by nombre or apellidos containing ignore case.
 	 *
-	 * @param nombre the nombre
+	 * @param nombre   the nombre
 	 * @param apellido the apellido
 	 * @return the response entity
 	 */
@@ -183,56 +199,54 @@ public class AlumnoController extends GenericController<Alumno, IAlumnoService> 
 	/**
 	 * Crear con foto.
 	 *
-	 * @param alumno the alumno
-	 * @param result the result
+	 * @param alumno  the alumno
+	 * @param result  the result
 	 * @param archivo the archivo
 	 * @return the response entity
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@PostMapping("/crear-con-foto")
-	public ResponseEntity<?> crearConFoto(@Valid Alumno alumno, BindingResult result, 
+	public ResponseEntity<?> crearConFoto(@Valid Alumno alumno, BindingResult result,
 			@RequestParam MultipartFile archivo) throws IOException {
-		if(!archivo.isEmpty()) {
+		if (!archivo.isEmpty()) {
 			alumno.setFoto(archivo.getBytes());
 		}
 		return super.creaEntidad(alumno, result);
 	}
-	
-	
-	
+
 	/**
 	 * Editar con foto.
 	 *
-	 * @param alumno the alumno
-	 * @param result the result
-	 * @param id the id
+	 * @param alumno  the alumno
+	 * @param result  the result
+	 * @param id      the id
 	 * @param archivo the archivo
 	 * @return the response entity
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@PutMapping("/editar-con-foto/{id}")
 	public ResponseEntity<?> editarConFoto(@Valid Alumno alumno, BindingResult result, @PathVariable Long id,
-			@RequestParam MultipartFile archivo) throws IOException{
-		
-		if(result.hasErrors()) {
+			@RequestParam MultipartFile archivo) throws IOException {
+
+		if (result.hasErrors()) {
 			return this.validar(result);
 		}
-		
+
 		Optional<Alumno> o = servicio.findById(id);
-		
-		if(o.isEmpty()) {
+
+		if (o.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
-		
+
 		Alumno alumnoDb = o.get();
 		alumnoDb.setNombre(alumno.getNombre());
 		alumnoDb.setApellidos(alumno.getApellidos());
 		alumnoDb.setEmail(alumno.getEmail());
-		
-		if(!archivo.isEmpty()) {
+
+		if (!archivo.isEmpty()) {
 			alumnoDb.setFoto(archivo.getBytes());
 		}
-		
+
 		return ResponseEntity.status(HttpStatus.CREATED).body(servicio.save(alumnoDb));
 	}
 	

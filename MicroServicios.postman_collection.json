@@ -1432,27 +1432,6 @@
 			"name": "Respuestas",
 			"item": [
 				{
-					"name": "ListaRespuestas",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8091/api/respuestas/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8091",
-							"path": [
-								"api",
-								"respuestas",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "RespuestasAlumnoExamen",
 					"request": {
 						"method": "GET",

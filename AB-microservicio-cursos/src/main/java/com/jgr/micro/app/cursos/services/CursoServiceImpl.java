@@ -49,6 +49,11 @@ public class CursoServiceImpl extends GenericServiceImpl<Curso, ICursoRepository
 	public void eliminarCursoAlumnoPorId(Long id) {
 		repository.eliminarCursoAlumnoPorId(id);
 	}
+
+	@Override
+	public Alumno obtenerDatosAlumno(Long id) {
+		return clientAlumno.obtenerDatosAlumno(id);
+	}
 	
 
 }

@@ -1,6 +1,5 @@
 package com.jgr.micro.app.examenes.entity.repository;
 
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.jgr.modelo.microservicio.datos.examen.entity.Asignatura;
