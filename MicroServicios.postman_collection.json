@@ -1462,7 +1462,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"texto\": \"\",\r\n        \"alumno\": {\r\n            \"id\": 1,\r\n            \"nombre\": null,\r\n            \"apellidos\": null,\r\n            \"email\": null,\r\n            \"createAt\": null,\r\n            \"fotoHashCode\": null\r\n        },\r\n        \"pregunta\": {\r\n            \"id\": 1,\r\n            \"texto\": \"Respuesta Pregunta1\"\r\n        }\r\n    },\r\n    {\r\n        \"texto\": \"\",\r\n        \"alumno\": {\r\n            \"id\": 1,\r\n            \"nombre\": null,\r\n            \"apellidos\": null,\r\n            \"email\": null,\r\n            \"createAt\": null,\r\n            \"fotoHashCode\": null\r\n        },\r\n        \"pregunta\": {\r\n            \"id\": 21,\r\n            \"texto\": \"Respuesta Pregunta21\"\r\n        }\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"id\": 2,\r\n        \"texto\": \"RESPUESTA ALUMNO2 PREGUNTA2\",\r\n        \"alumno\": {\r\n            \"id\": 1,\r\n            \"nombre\": \"nombreconfoto\",\r\n            \"apellidos\": \"apellidosconfoto\",\r\n            \"email\": \"emailconfoto@mail.com\",\r\n            \"createAt\": \"2022-10-28T08:15:35.000+00:00\",\r\n            \"fotoHashCode\": 1067802285\r\n        },\r\n         \"pregunta\": {\r\n            \"id\": 1,\r\n            \"texto\": \"Pregunta1 EXAMEN1\"\r\n         }\r\n    }   \r\n    ]",
 							"options": {
 								"raw": {
 									"language": "json"
