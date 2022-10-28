@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-27 PRIMERA SUBIDA DEL DIA"
+message="$(date)2022-10-27 CENTRALIZADO TODO EN EL servicio-configuracion-prod.properties"
 fi
 
 start=`date +%s`

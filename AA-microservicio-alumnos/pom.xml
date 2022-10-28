@@ -84,15 +84,15 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 		</dependency>
-		<!-- PARA LAS PRUEBAS-->
+		<!-- PARA LAS PRUEBAS
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<!--
+			
 			<scope>test</scope>
-			-->
+			
 		</dependency>
-
+			-->
 
 		<!-- SWAGGER https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
 		<dependency>

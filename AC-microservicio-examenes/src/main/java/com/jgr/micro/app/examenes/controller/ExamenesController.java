@@ -24,7 +24,6 @@ import com.jgr.micro.generic.controller.GenericController;
 import brave.Tracer;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ExamenesController.
  */

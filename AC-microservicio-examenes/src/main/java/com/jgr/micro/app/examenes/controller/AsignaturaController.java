@@ -37,12 +37,13 @@ public class AsignaturaController extends GenericController<Asignatura, IAsignat
 	private CircuitBreakerFactory circuitBreakerFactory;
 	
 	
+	/*
 	@GetMapping()	
 	public ResponseEntity<?>listarAsignaturas(){
 		
 		return ResponseEntity.ok(servicio.findAllAsignaturas());
 	}
-	
+	*/
 
 	
 	@GetMapping("/{nomasignatura}")	
