@@ -15,7 +15,7 @@ PushLog="/dev/null"
 # Mensaje
 message=$@
 if [ -z "$message" ]; then
-message="$(date)2022-10-28 lista respuestas"
+message="$(date)2022-10-29 PRIMERA SUBIDA DEL DIA"
 fi
 
 start=`date +%s`
@@ -24,9 +24,9 @@ inicio_ns=`date +%s%N`
 inicio=`date +%s`
 
 # Haciendo los git add/commit/push por steps
-git add . -v
-git add * -v
-git add -A -v
+git add .
+git add *
+git add -A
 git maintenance start
 
 while read a b c
