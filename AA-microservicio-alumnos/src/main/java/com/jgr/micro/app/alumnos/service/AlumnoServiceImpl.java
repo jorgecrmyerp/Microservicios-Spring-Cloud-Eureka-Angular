@@ -9,7 +9,6 @@ import com.jgr.micro.app.alumnos.repository.IAlumnoRepository;
 import com.jgr.micro.generic.services.GenericServiceImpl;
 import com.jgr.modelo.microservicio.datos.alumno.entity.Alumno;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AlumnoServiceImpl.
  * Hereda de la clase generica GENERICSERVICEIMPL,como parametros le pasamos la entidad
